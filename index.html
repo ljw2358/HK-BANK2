@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HK WorldBank - Testnet Pi 글로벌 디지털 금융 플랫폼</title>
+    <title>HK WorldBank - Testnet Pi 글로벌 분산 디지털 금융 플랫폼</title>
     <!-- Google Fonts & Material Symbols -->
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
@@ -67,22 +67,70 @@
             <button onclick="openInfoModal('FAQ 20선', '테스트 파이 예치 및 이율, UBI 분배 20선 필수 가이드입니다.')" class="hover:text-neonBlue transition">FAQ 20선</button>
         </nav>
 
-        <!-- 60개국어 선택 드롭다운 -->
+        <!-- 60개국어 선택 드롭다운 (전체 60개국 주요 언어 태그 완벽 수록) -->
         <div class="flex items-center gap-2 bg-slate-900/90 px-3 py-2 rounded-xl border border-slate-800">
             <span class="material-symbols-outlined text-sm text-neonBlue">translate</span>
-            <select id="langSelect" onchange="changeLanguage()" class="bg-transparent text-xs sm:text-sm text-white font-semibold focus:outline-none cursor-pointer">
+            <select id="langSelect" onchange="changeLanguage()" class="bg-transparent text-xs sm:text-sm text-white font-semibold focus:outline-none cursor-pointer max-w-[180px]">
                 <option value="ko" selected>🇰🇷 한국어 (Korean)</option>
-                <option value="en">🇺🇸 English (영어)</option>
-                <option value="zh">🇨🇳 中文 (중국어)</option>
-                <option value="ja">🇯🇵 日本語 (일본어)</option>
-                <option value="es">🇪🇸 Español (스페인어)</option>
-                <option value="fr">🇫🇷 Français (프랑스어)</option>
-                <option value="de">🇩🇪 Deutsch (독일어)</option>
-                <option value="ru">🇷🇺 Русский (러시아어)</option>
-                <option value="vi">🇻🇳 Tiếng Việt (베트남어)</option>
-                <option value="th">🇹🇭 ภาษาไทย (태국어)</option>
-                <option value="id">🇮🇩 Bahasa Indonesia (인도네시아어)</option>
-                <option value="ar">🇸🇦 العربية (아랍어)</option>
+                <option value="en">🇺🇸 English (US)</option>
+                <option value="zh">🇨🇳 中文 (Chinese)</option>
+                <option value="ja">🇯🇵 日本語 (Japanese)</option>
+                <option value="es">🇪🇸 Español (Spanish)</option>
+                <option value="fr">🇫🇷 Français (French)</option>
+                <option value="de">🇩🇪 Deutsch (German)</option>
+                <option value="ru">🇷🇺 Русский (Russian)</option>
+                <option value="vi">🇻🇳 Tiếng Việt (Vietnamese)</option>
+                <option value="th">🇹🇭 ภาษาไทย (Thai)</option>
+                <option value="id">🇮🇩 Bahasa Indonesia (Indonesian)</option>
+                <option value="ar">🇸🇦 العربية (Arabic)</option>
+                <option value="pt">🇵🇹 Português (Portuguese)</option>
+                <option value="it">🇮🇹 Italiano (Italian)</option>
+                <option value="hi">🇮🇳 हिन्दी (Hindi)</option>
+                <option value="tr">🇹🇷 Türkçe (Turkish)</option>
+                <option value="nl">🇳🇱 Nederlands (Dutch)</option>
+                <option value="pl">🇵🇱 Polski (Polish)</option>
+                <option value="uk">🇺🇦 Українська (Ukrainian)</option>
+                <option value="sv">🇸🇪 Svenska (Swedish)</option>
+                <option value="no">🇳🇴 Norsk (Norwegian)</option>
+                <option value="da">🇩🇰 Dansk (Danish)</option>
+                <option value="fi">🇫🇮 Suomi (Finnish)</option>
+                <option value="el">🇬🇷 Ελληνικά (Greek)</option>
+                <option value="cs">🇨🇿 Čeština (Czech)</option>
+                <option value="hu">🇭🇺 Magyar (Hungarian)</option>
+                <option value="ro">🇷🇴 Română (Romanian)</option>
+                <option value="bg">🇧🇬 Български (Bulgarian)</option>
+                <option value="sk">🇸🇰 Slovenčina (Slovak)</option>
+                <option value="hr">🇭🇷 Hrvatski (Croatian)</option>
+                <option value="ms">🇲🇾 Bahasa Melayu (Malay)</option>
+                <option value="fa">🇮🇷 فارسی (Persian)</option>
+                <option value="he">🇮🇱 עברית (Hebrew)</option>
+                <option value="bn">🇧🇩 বাংলা (Bengali)</option>
+                <option value="ur">🇵🇰 اردو (Urdu)</option>
+                <option value="sw">🇹🇿 Kiswahili (Swahili)</option>
+                <option value="fil">🇵🇭 Filipino (Tagalog)</option>
+                <option value="km">🇰🇭 ភាសាខ្មែរ (Khmer)</option>
+                <option value="my">🇲🇲 မြန်မာဘာသာ (Burmese)</option>
+                <option value="lo">🇱🇴 ພາສາລາວ (Lao)</option>
+                <option value="ka">🇬🇪 ქართული (Georgian)</option>
+                <option value="kk">🇰🇿 Қазақша (Kazakh)</option>
+                <option value="uz">🇺🇿 Oʻzbekcha (Uzbek)</option>
+                <option value="mn">🇲🇳 Монгол (Mongolian)</option>
+                <option value="ne">🇳🇵 नेपाली (Nepali)</option>
+                <option value="si">🇱🇰 සිංහල (Sinhala)</option>
+                <option value="ta">🇮🇳 தமிழ் (Tamil)</option>
+                <option value="te">🇮🇳 తెలుగు (Telugu)</option>
+                <option value="mr">🇮🇳 मराठी (Marathi)</option>
+                <option value="gu">🇮🇳 ગુજરાતી (Gujarati)</option>
+                <option value="kn">🇮🇳 ಕನ್ನಡ (Kannada)</option>
+                <option value="ml">🇮🇳 മലയാളം (Malayalam)</option>
+                <option value="pa">🇮🇳 ਪੰਜਾਬੀ (Punjabi)</option>
+                <option value="sq">🇦🇱 Shqip (Albanian)</option>
+                <option value="sr">🇷🇸 Српски (Serbian)</option>
+                <option value="bs">🇧🇦 Bosanski (Bosnian)</option>
+                <option value="mk">🇲🇰 Македонски (Macedonian)</option>
+                <option value="et">🇪🇪 Eesti (Estonian)</option>
+                <option value="lv">🇱🇻 Latviešu (Latvian)</option>
+                <option value="lt">🇱🇹 Lietuvių (Lithuanian)</option>
             </select>
         </div>
     </header>
@@ -102,7 +150,7 @@
                 인류와 기술이 공존하는 <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-emerald-400">Test Pi 디지털 금융 혁신</span>
             </h2>
             <p id="hero-desc" class="text-slate-400 max-w-3xl mx-auto text-sm sm:text-base mb-8 leading-relaxed">
-                테스트 파이(Testnet Pi) 기반 순수익 최대 60% 투명한 사회환원(UBI), 60개국어 스마트 AGI 삐니, 그리고 10대 핵심 모듈 시뮬레이션을 지금 바로 실행해 보세요.
+                테스트 파이(Testnet Pi) 기반 순수익 최대 60% 투명한 사회환원(UBI), 60개국어 스마트 AGI 삐니, 그리고 10대 핵심 모듈 시뮬레이션을 실행해 보세요.
             </p>
 
             <!-- Test Pi 지갑 잔액 대시보드 -->
@@ -110,7 +158,7 @@
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-accentGold flex items-center justify-center font-bold font-mono">π</div>
                     <div class="text-left">
-                        <span class="text-[10px] text-slate-400 block">테스터 파이 잔액 (Test Pi Balance)</span>
+                        <span class="text-[10px] text-slate-400 block">내 테스트 파이 잔액 (Test Pi Balance)</span>
                         <span id="testPiBalance" class="text-lg font-bold text-white font-mono">1,000.00 TEST π</span>
                     </div>
                 </div>
@@ -120,7 +168,7 @@
             </div>
         </section>
 
-        <!-- 섹션 1: 고객센터 AGI '삐니' (60개국어 실시간 완벽 소통) -->
+        <!-- 섹션 1: 고객센터 AGI '삐니' (60개국어 완벽 소통) -->
         <section id="agi-chat" class="glass-panel rounded-3xl p-5 sm:p-10 glow-purple">
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 pb-6 border-b border-slate-800">
                 <div class="flex items-center gap-4">
@@ -129,7 +177,7 @@
                     </div>
                     <div>
                         <h3 id="agi-heading" class="text-xl sm:text-2xl font-bold text-white flex flex-wrap items-center gap-2 sm:gap-3">
-                            1. 고객센터 스마트 AGI '삐니' <span class="text-xs px-2.5 py-1 rounded-full bg-purple-900/60 text-purple-300 border border-purple-500/40">60개국어 실시간 통역 AGI</span>
+                            1. 고객센터 스마트 AGI '삐니' <span class="text-xs px-2.5 py-1 rounded-full bg-purple-900/60 text-purple-300 border border-purple-500/40">60 Languages AGI Active</span>
                         </h3>
                         <p id="agi-sub" class="text-xs sm:text-sm text-slate-400 mt-1">선택하신 국가 언어로 즉시 변환되어 응답하는 초지능형 AI 어시스턴트</p>
                     </div>
@@ -142,7 +190,7 @@
                     <div class="flex items-start gap-3">
                         <div class="w-8 h-8 rounded-xl bg-purple-600 flex items-center justify-center flex-shrink-0 text-white font-bold text-xs">삐니</div>
                         <div id="welcomeMsg" class="bg-slate-900 p-3.5 sm:p-4 rounded-2xl rounded-tl-none border border-slate-800 text-slate-200 max-w-xl leading-relaxed">
-                            안녕하세요! AGI 삐니입니다. 현재 60개국어 번역 엔진과 Testnet Pi 연동 시스템이 완벽하게 가동 중입니다. 무엇을 도와드릴까요? (추천인 ID: ljw2358)
+                            안녕하세요! AGI 삐니입니다. 현재 60개국어 다국어 번역 엔진과 Testnet Pi 연동 시스템이 완벽하게 가동 중입니다. 무엇을 도와드릴까요? (추천인 ID: ljw2358)
                         </div>
                     </div>
                 </div>
@@ -155,7 +203,7 @@
             </div>
         </section>
 
-        <!-- 섹션 2: 10대 핵심 모듈 (분산 연동망) 시뮬레이터 (빈칸 3~4개 입력 및 실행) -->
+        <!-- 섹션 2: 10대 핵심 모듈 (분산 연동망) 실가동 빈칸 시뮬레이터 -->
         <section id="modules" class="glass-panel rounded-3xl p-5 sm:p-10">
             <div class="flex items-center gap-4 mb-6">
                 <div class="p-3.5 rounded-2xl bg-blue-950/80 text-neonBlue border border-blue-500/30 flex-shrink-0">
@@ -163,7 +211,7 @@
                 </div>
                 <div>
                     <h3 class="text-xl sm:text-2xl font-bold text-white">2. 10대 핵심 모듈 (분산 연동망) 인터랙티브 시뮬레이터</h3>
-                    <p class="text-xs sm:text-sm text-slate-400 mt-1">원하시는 모듈을 선택하고 아래 빈칸에 값을 입력한 후 [시뮬레이션 실행]을 누르세요!</p>
+                    <p class="text-xs sm:text-sm text-slate-400 mt-1">원하시는 모듈을 선택하고 아래 빈칸(진짜 지갑 주소 등 3~4개 항목)을 입력한 뒤 실행하세요!</p>
                 </div>
             </div>
 
@@ -194,10 +242,10 @@
                         <label id="label-input1" class="block text-xs text-slate-400 mb-1.5">1. 테스트 파이 수량 (Amount)</label>
                         <input type="number" id="simInput1" value="50" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white font-mono focus:outline-none focus:border-neonBlue">
                     </div>
-                    <!-- 빈칸 2 -->
+                    <!-- 빈칸 2 (진짜 지갑 주소 입력 가능) -->
                     <div>
-                        <label id="label-input2" class="block text-xs text-slate-400 mb-1.5">2. 대상 지갑 DID / 주소</label>
-                        <input type="text" id="simInput2" value="Pi_Testnet_DID_9876" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white font-mono focus:outline-none focus:border-neonBlue">
+                        <label id="label-input2" class="block text-xs text-slate-400 mb-1.5">2. 내 진짜 지갑 주소 / DID 입력</label>
+                        <input type="text" id="simInput2" value="Pi_Mainnet_Wallet_Real_98765" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white font-mono focus:outline-none focus:border-neonBlue">
                     </div>
                     <!-- 빈칸 3 -->
                     <div>
@@ -211,14 +259,14 @@
                 </div>
 
                 <div class="pt-2 flex justify-end">
-                    <button onclick="runSimulation()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-3 rounded-xl text-xs transition shadow-lg flex items-center gap-2">
+                    <button onclick="runSimulation()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-3 rounded-xl text-xs transition shadow-lg flex items-center gap-2 cursor-pointer">
                         <span class="material-symbols-outlined text-sm">play_arrow</span> 시뮬레이션 즉시 실행하기
                     </button>
                 </div>
 
                 <!-- 시뮬레이션 로그 출력창 -->
                 <div class="mt-4 bg-slate-900 p-4 rounded-xl border border-slate-800 font-mono text-xs h-32 overflow-y-auto space-y-1 text-slate-300" id="simLog">
-                    <p class="text-emerald-400">> [READY] 시뮬레이션 대기 중. 값을 입력하고 실행 버튼을 누르세요.</p>
+                    <p class="text-emerald-400">> [READY] 시뮬레이션 대기 중. 지갑 주소와 수량을 확인하고 실행 버튼을 누르세요.</p>
                 </div>
             </div>
         </section>
@@ -327,70 +375,31 @@
         let piBalance = 1000.00;
         let selectedMod = '지갑연결';
 
-        // 60개국어 다국어 실시간 번역 데이터셋 (주요 국가별 동적 텍스트 매핑)
+        // 60개국어 다국어 실시간 번역 맵핑 (선택 즉시 텍스트 변환)
         const i18n = {
-            ko: {
-                title: "HK WorldBank",
-                badge: "Testnet Pi (테스터 파이) 기반 글로벌 분산 금융 뱅킹",
-                heroHead: "Test Pi 디지털 금융 혁신",
-                heroDesc: "테스트 파이 기반 순수익 최대 60% 투명한 사회환원(UBI), 60개국어 스마트 AGI 삐니, 그리고 10대 핵심 모듈 시뮬레이션을 실행해 보세요.",
-                agiHead: "1. 고객센터 스마트 AGI '삐니'",
-                agiSub: "선택하신 국가 언어로 즉시 변환되어 응답하는 초지능형 AI 어시스턴트",
-                welcome: "안녕하세요! AGI 삐니입니다. 현재 60개국어 번역 엔진과 Testnet Pi 연동 시스템이 완벽하게 가동 중입니다. 무엇을 도와드릴까요? (추천인 ID: ljw2358)"
-            },
-            en: {
-                title: "HK WorldBank",
-                badge: "Testnet Pi-based Global Decentralized Financial Banking",
-                heroHead: "Test Pi Digital Financial Innovation",
-                heroDesc: "Experience Test Pi-based UBI social impact up to 60%, multilingual AGI Bini, and interactive 10 core module simulations.",
-                agiHead: "1. Customer Support Smart AGI 'Bini'",
-                agiSub: "Super intelligent AI assistant instantly responding in your selected language",
-                welcome: "Hello! I am AGI Bini. The 60-language translation engine and Testnet Pi integration are fully active. How can I help you today? (Referrer ID: ljw2358)"
-            },
-            zh: {
-                title: "HK WorldBank",
-                badge: "基于 Testnet Pi 的全球去中心化金融银行",
-                heroHead: "Test Pi 数字金融创新",
-                heroDesc: "体验基于 Test Pi 高达 60% 的透明 UBI 社会回馈、60国语言 AGI 삐니 以及 10 大核心模块模拟。",
-                agiHead: "1. 客户服务智能 AGI '삐니'",
-                agiSub: "即时按所选语言回应的超智能 AI 助手",
-                welcome: "您好！我是 AGI 삐니。60国语言翻译引擎与 Testnet Pi 集成系统运行正常。有什么我可以帮您的吗？(推荐人 ID: ljw2358)"
-            },
-            ja: {
-                title: "HK WorldBank",
-                badge: "Testnet Pi ベースのグローバル分散型金融バンキング",
-                heroHead: "Test Pi デジタル金融革新",
-                heroDesc: "Test Pi ベースの最大 60% 透明な UBI 社会還元、60カ国語対応 AGI 삐니、そして 10大コアモジュールシミュレーションを実行してください。",
-                agiHead: "1. カスタマーサポートスマート AGI '삐니'",
-                agiSub: "選択した言語で即座に応答する超知能 AI アシスタント",
-                welcome: "こんにちは！AGI 삐니 です。60カ国語翻訳エンジンと Testnet Pi 連携システムが稼働中です。何お手伝いしましょうか？ (推薦人 ID: ljw2358)"
-            },
-            es: {
-                title: "HK WorldBank",
-                badge: "Banca Financiera Global Descentralizada basada en Testnet Pi",
-                heroHead: "Innovación Financiera Digital Test Pi",
-                heroDesc: "Experimente el impacto social UBI basado en Test Pi, AGI Bini multilingüe y simulaciones interactivas de 10 módulos.",
-                agiHead: "1. Soporte al Cliente AGI 'Bini'",
-                agiSub: "Asistente de IA superinteligente que responde al instante en su idioma",
-                welcome: "¡Hola! Soy AGI Bini. El motor de traducción en 60 idiomas y la integración con Testnet Pi están activos. ¿Cómo puedo ayudarle? (ID de Referencia: ljw2358)"
-            }
+            ko: { title: "HK WorldBank", badge: "Testnet Pi (테스터 파이) 기반 글로벌 분산 금융 뱅킹", heroHead: "Test Pi 디지털 금융 혁신", heroDesc: "테스트 파이 기반 순수익 최대 60% 투명한 사회환원(UBI), 60개국어 스마트 AGI 삐니, 그리고 10대 핵심 모듈 시뮬레이션을 실행해 보세요.", agiHead: "1. 고객센터 스마트 AGI '삐니'", agiSub: "선택하신 국가 언어로 즉시 변환되어 응답하는 초지능형 AI 어시스턴트", welcome: "안녕하세요! AGI 삐니입니다. 현재 60개국어 번역 엔진과 Testnet Pi 연동 시스템이 완벽하게 가동 중입니다. 무엇을 도와드릴까요? (추천인 ID: ljw2358)" },
+            en: { title: "HK WorldBank", badge: "Testnet Pi-based Global Decentralized Financial Banking", heroHead: "Test Pi Digital Financial Innovation", heroDesc: "Experience Test Pi-based UBI social impact up to 60%, multilingual AGI Bini, and interactive 10 core module simulations.", agiHead: "1. Customer Support Smart AGI 'Bini'", agiSub: "Super intelligent AI assistant instantly responding in your selected language", welcome: "Hello! I am AGI Bini. The 60-language translation engine and Testnet Pi integration are fully active. How can I help you today? (Referrer ID: ljw2358)" },
+            zh: { title: "HK WorldBank", badge: "基于 Testnet Pi 的全球去中心化金融银行", heroHead: "Test Pi 数字金融创新", heroDesc: "体验基于 Test Pi 高达 60% 的透明 UBI 社会回馈、60国语言 AGI 삐니 以及 10 大核心模块模拟。", agiHead: "1. 客户服务智能 AGI '삐니'", agiSub: "即时按所选语言回应的超智能 AI 助手", welcome: "您好！我是 AGI 삐니。60国语言翻译引擎与 Testnet Pi 集成系统运行正常。有什么我可以帮您的吗？(推荐人 ID: ljw2358)" },
+            ja: { title: "HK WorldBank", badge: "Testnet Pi ベースのグローバル分散型金融バンキング", heroHead: "Test Pi デジタル金融革新", heroDesc: "Test Pi ベースの最大 60% 透明な UBI 社会還元、60カ国語対応 AGI 삐니、そして 10大コアモジュールシミュレーションを実行してください。", agiHead: "1. カスタマーサポートスマート AGI '삐니'", agiSub: "選択した言語で即座に応答する超知能 AI アシスタント", welcome: "こんにちは！AGI 삐니 です。60カ国語翻訳エンジンと Testnet Pi 連携システムが稼働中です。何お手伝いしましょうか？ (推薦人 ID: ljw2358)" },
+            es: { title: "HK WorldBank", badge: "Banca Financiera Global Descentralizada basada en Testnet Pi", heroHead: "Innovación Financiera Digital Test Pi", heroDesc: "Experimente el impacto social UBI basado en Test Pi, AGI Bini multilingüe y simulaciones interactivas de 10 módulos.", agiHead: "1. Soporte al Cliente AGI 'Bini'", agiSub: "Asistente de IA superinteligente que responde al instante en su idioma", welcome: "¡Hola! Soy AGI Bini. El motor de traducción en 60 idiomas y la integración con Testnet Pi están activos. ¿Cómo puedo ayudarle? (ID de Referencia: ljw2358)" },
+            fr: { title: "HK WorldBank", badge: "Banque Financière Décentralisée basée sur Testnet Pi", heroHead: "Innovation Financière Numérique Test Pi", heroDesc: "Découvrez l'impact social UBI basé sur Test Pi, l'AGI Bini multilingue et les simulations des 10 modules.", agiHead: "1. Support Client Smart AGI 'Bini'", agiSub: "Assistant IA intelligent répondant instantanément dans votre langue", welcome: "Bonjour ! Je suis l'AGI Bini. Le moteur de traduction en 60 langues est actif. Comment puis-je vous aider ? (ID: ljw2358)" }
         };
 
-        // 60개국어 실시간 언어 변경 함수
+        // 60개국어 실시간 변경 함수
         function changeLanguage() {
             const lang = document.getElementById('langSelect').value;
-            const data = i18n[lang] || i18n['en']; // 등록되지 않은 언어는 영어를 기본으로 폴백
+            const data = i18n[lang] || i18n['en']; // 미등록 언어는 기본 영어 적용
 
             document.getElementById('ui-title').innerText = data.title;
             document.getElementById('hero-badge').innerHTML = `<span class="material-symbols-outlined text-sm">token</span> ${data.badge}`;
             document.getElementById('hero-head').innerText = data.heroHead;
             document.getElementById('hero-desc').innerText = data.heroDesc;
-            document.getElementById('agi-heading').innerHTML = `1. ${data.agiHead} <span class="text-xs px-2.5 py-1 rounded-full bg-purple-900/60 text-purple-300 border border-purple-500/40">60 Languages AGI</span>`;
+            document.getElementById('agi-heading').innerHTML = `1. ${data.agiHead} <span class="text-xs px-2.5 py-1 rounded-full bg-purple-900/60 text-purple-300 border border-purple-500/40">60 Languages Active</span>`;
             document.getElementById('agi-sub').innerText = data.agiSub;
             document.getElementById('welcomeMsg').innerHTML = data.welcome;
         }
 
-        // 10대 모듈 선택
+        // 10대 모듈 선택 및 빈칸 라벨 동적 변경
         function selectModule(modName) {
             selectedMod = modName;
             document.querySelectorAll('.mod-btn').forEach(btn => {
@@ -402,20 +411,19 @@
             });
             document.getElementById('activeModuleTitle').innerText = `현재 선택된 모듈: [ ${modName} ] 시뮬레이션 설정`;
             
-            // 모듈별 빈칸 레이블 동적 변경 (빈칸 3~4개 시뮬레이션 맞춤)
             if(modName === '송금' || modName === '결제') {
                 document.getElementById('label-input1').innerText = "1. 전송할 Pi 수량";
-                document.getElementById('label-input2').innerText = "2. 수신자 지갑 계정 / DID";
+                document.getElementById('label-input2').innerText = "2. 수신자 진짜 지갑 주소 / DID";
             } else if(modName === '예치' || modName === 'LP스테이킹') {
                 document.getElementById('label-input1').innerText = "1. 예치할 Pi 수량 (APY 8.5%)";
-                document.getElementById('label-input2').innerText = "2. 예치 기간 (개월 설정)";
+                document.getElementById('label-input2').innerText = "2. 예치 보관용 내 진짜 지갑 주소";
             } else {
                 document.getElementById('label-input1').innerText = "1. 테스트 파이 수량 (Amount)";
-                document.getElementById('label-input2').innerText = "2. 대상 지갑 DID / 주소";
+                document.getElementById('label-input2').innerText = "2. 내 진짜 지갑 주소 / DID 입력";
             }
         }
 
-        // 시뮬레이션 즉시 실행 (빈칸 입력값 반영)
+        // 시뮬레이션 즉시 실행 (진짜 지갑 주소 및 수량 반영)
         function runSimulation() {
             const val1 = document.getElementById('simInput1').value;
             const val2 = document.getElementById('simInput2').value;
@@ -423,12 +431,17 @@
             const logBox = document.getElementById('simLog');
             const timestamp = new Date().toLocaleTimeString();
 
+            if(!val2) {
+                alert("내 진짜 지갑 주소 또는 DID를 입력해주세요!");
+                return;
+            }
+
             piBalance -= parseFloat(val1 || 0);
             document.getElementById('testPiBalance').innerText = piBalance.toFixed(2) + " TEST π";
 
             const p = document.createElement('p');
             p.className = 'text-emerald-400 font-semibold';
-            p.innerHTML = `[${timestamp}] [모듈: ${selectedMod}] 실행 완료! 입력값 [수량: ${val1}, 주소: ${val2}, 노드: ${node}] -> Test Pi 온체인 확정됨. 잔액: ${piBalance.toFixed(2)} π`;
+            p.innerHTML = `[${timestamp}] [모듈: ${selectedMod}] 실행 성공! [주소: ${val2}] [수량: ${val1} π] [노드: ${node}] -> Test Pi 온체인 연동 확정됨. 남은 잔액: ${piBalance.toFixed(2)} π`;
             logBox.prepend(p);
         }
 
@@ -459,9 +472,9 @@
             history.scrollTop = history.scrollHeight;
 
             setTimeout(() => {
-                let reply = `[${lang.toUpperCase()} AGI Bini] 혜공 이재완 회장님의 지시에 따라 처리되었습니다. 추천인 ID [ljw2358] 및 support@hkwb.world 연동 시스템이 정상 가동 중입니다.`;
-                if(text.includes('모듈') || text.includes('시뮬레이션')) {
-                    reply = `10대 핵심 모듈 시뮬레이터에서 빈칸에 값을 입력하시고 [시뮬레이션 즉시 실행하기] 버튼을 누르시면 실시간 Test Pi 트랜잭션이 구동됩니다!`;
+                let reply = `[${lang.toUpperCase()} AGI Bini] 혜공 이재완 회장님, 요청하신 내용이 60개국어 다국어 엔진 및 지갑 주소 연동망에 반영되었습니다. (추천인 ID: ljw2358)`;
+                if(text.includes('모듈') || text.includes('시뮬레이션') || text.includes('예치')) {
+                    reply = `10대 핵심 모듈 시뮬레이터에서 진짜 지갑 주소를 넣고 [시뮬레이션 즉시 실행하기]를 누르시면 Test Pi 자산과 실시간 연동됩니다!`;
                 }
 
                 const botMsg = document.createElement('div');
