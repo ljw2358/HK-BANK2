@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HK WorldBank - Global Digital Banking Platform</title>
+    <title>HK WorldBank - Global Digital Banking Platform (hkwb.world)</title>
     <style>
         :root {
-            --bg-dark: #0b0f19;
+            --bg-dark: #05070b;
+            --bg-gradient: linear-gradient(135deg, #0b0f19 0%, #1a1a2e 50%, #0b0f19 100%);
             --panel-bg: rgba(26, 26, 46, 0.85);
+            --panel-border: rgba(74, 74, 226, 0.4);
             --neon-cyan: #00ffcc;
             --neon-blue: #4a4ae2;
             --text-main: #ffffff;
             --text-sub: #a0aec0;
             --accent-purple: #9f7aea;
+            --success-green: #38ef7d;
         }
 
         * {
@@ -23,7 +26,8 @@
         }
 
         body {
-            background-color: var(--bg-dark);
+            background: var(--bg-dark);
+            background-image: var(--bg-gradient);
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
@@ -31,18 +35,19 @@
             overflow-x: hidden;
         }
 
-        /* Header Navigation */
+        /* Top Header & Navigation */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 30px;
+            padding: 18px 40px;
             background: rgba(11, 15, 25, 0.95);
             border-bottom: 1px solid rgba(74, 74, 226, 0.3);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
 
         .logo-area {
@@ -54,222 +59,295 @@
         .logo-badge {
             background: linear-gradient(135deg, #ff416c, #ff4b2b);
             color: white;
-            padding: 6px 14px;
+            padding: 6px 16px;
             border-radius: 20px;
             font-weight: bold;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             box-shadow: 0 0 15px rgba(255, 65, 108, 0.4);
+        }
+
+        .platform-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            color: var(--text-main);
         }
 
         .nav-links {
             display: flex;
-            gap: 25px;
+            gap: 30px;
             font-size: 0.95rem;
             color: var(--text-sub);
         }
 
         .nav-links span {
             cursor: pointer;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
         }
 
         .nav-links span:hover {
             color: var(--neon-cyan);
+            text-shadow: 0 0 10px rgba(0,255,204,0.5);
         }
 
-        /* Language Selector */
         .lang-select {
             background: #1a1a2e;
             color: var(--neon-cyan);
-            padding: 8px 14px;
+            padding: 8px 16px;
             border: 1px solid var(--neon-blue);
             border-radius: 8px;
             font-weight: bold;
             cursor: pointer;
             outline: none;
+            transition: all 0.3s;
+        }
+
+        .lang-select:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 10px rgba(0,255,204,0.3);
         }
 
         /* Main Container */
         main {
             flex: 1;
-            max-width: 1400px;
+            max-width: 1450px;
             margin: 0 auto;
-            padding: 30px;
+            padding: 40px;
             width: 100%;
         }
 
-        /* Module Section Header */
+        /* Section Header Banner */
         .section-header {
-            background: linear-gradient(90deg, rgba(74, 74, 226, 0.2), transparent);
-            border-left: 4px solid var(--neon-cyan);
-            padding: 12px 20px;
-            margin-bottom: 25px;
-            border-radius: 0 8px 8px 0;
+            background: linear-gradient(90deg, rgba(74, 74, 226, 0.25), transparent);
+            border-left: 5px solid var(--neon-cyan);
+            padding: 16px 24px;
+            margin-bottom: 30px;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .section-header h2 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: var(--text-main);
         }
 
         .section-header p {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--text-sub);
-            margin-top: 4px;
+            margin-top: 6px;
         }
 
         /* 10 Core Modules Grid */
         .modules-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 18px;
+            margin-bottom: 35px;
         }
 
         .module-card {
             background: var(--panel-bg);
-            border: 1px solid rgba(74, 74, 226, 0.4);
-            border-radius: 12px;
-            padding: 20px;
+            border: 1px solid var(--panel-border);
+            border-radius: 14px;
+            padding: 22px;
             text-align: center;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: transparent;
+            transition: background 0.3s;
         }
 
         .module-card:hover, .module-card.active {
             border-color: var(--neon-cyan);
-            box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
-            transform: translateY(-3px);
-            background: rgba(26, 26, 46, 0.95);
+            box-shadow: 0 0 25px rgba(0, 255, 204, 0.25);
+            transform: translateY(-4px);
+            background: rgba(30, 30, 55, 0.95);
+        }
+
+        .module-card:hover::before, .module-card.active::before {
+            background: var(--neon-cyan);
         }
 
         .module-card .icon {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+            font-size: 2rem;
+            margin-bottom: 12px;
         }
 
         .module-card h3 {
-            font-size: 1rem;
+            font-size: 1.05rem;
             color: var(--text-main);
+            margin-bottom: 4px;
         }
 
-        /* Simulation Panel */
+        .module-card span {
+            font-size: 0.75rem;
+            color: var(--text-sub);
+        }
+
+        /* Simulation Control Panel */
         .sim-panel {
             background: var(--panel-bg);
             border: 1px solid var(--neon-blue);
-            border-radius: 16px;
-            padding: 25px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.5);
-            margin-bottom: 30px;
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            margin-bottom: 35px;
+            backdrop-filter: blur(10px);
         }
 
         .sim-panel h3 {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             color: var(--neon-cyan);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-size: 1.2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 15px;
         }
 
         .sim-controls {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-bottom: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 25px;
         }
 
         .control-group label {
             display: block;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--text-sub);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            font-weight: 500;
         }
 
         .control-group input, .control-group select {
             width: 100%;
-            padding: 12px 15px;
+            padding: 14px 18px;
             background: #0f172a;
             border: 1px solid rgba(74, 74, 226, 0.5);
-            border-radius: 8px;
+            border-radius: 10px;
             color: white;
-            font-size: 0.95rem;
+            font-size: 1rem;
             outline: none;
+            transition: all 0.3s;
         }
 
         .control-group input:focus, .control-group select:focus {
             border-color: var(--neon-cyan);
+            box-shadow: 0 0 12px rgba(0,255,204,0.25);
         }
 
         .action-btn {
             background: linear-gradient(135deg, #00ffcc, #00b09b);
             color: #0b0f19;
             font-weight: bold;
-            padding: 12px 25px;
+            padding: 14px 30px;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
-            transition: opacity 0.3s;
-            box-shadow: 0 0 15px rgba(0,255,204,0.3);
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(0,255,204,0.3);
+            font-size: 1rem;
+            letter-spacing: 0.5px;
         }
 
         .action-btn:hover {
-            opacity: 0.9;
+            opacity: 0.95;
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(0,255,204,0.5);
         }
 
         /* Terminal Logs */
-        .terminal-box {
-            background: #05070b;
+        .terminal-container {
+            background: #030508;
             border: 1px solid #1e293b;
-            border-radius: 10px;
-            padding: 15px;
-            font-family: 'Courier New', Courier, monospace;
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.9);
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
             font-size: 0.85rem;
-            height: 180px;
+            color: var(--text-sub);
+            border-bottom: 1px solid #1e293b;
+            padding-bottom: 8px;
+        }
+
+        .terminal-box {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            height: 220px;
             overflow-y: auto;
-            color: #38ef7d;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+            color: var(--success-green);
+            line-height: 1.5;
         }
 
         .terminal-box div {
-            margin-bottom: 6px;
-            line-height: 1.4;
+            margin-bottom: 8px;
+            border-left: 2px solid var(--neon-cyan);
+            padding-left: 10px;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 25px;
-            background: #07090e;
+            padding: 30px;
+            background: #04060a;
             border-top: 1px solid rgba(74, 74, 226, 0.2);
             color: var(--text-sub);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            margin-top: auto;
         }
 
         footer a {
             color: var(--neon-cyan);
             text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- Header & Navbar -->
     <header>
         <div class="logo-area">
             <span class="logo-badge">hkwb.world</span>
-            <span style="font-weight: bold; font-size: 1.1rem;">HK WorldBank Platform</span>
+            <span class="platform-title">HK WorldBank Platform</span>
         </div>
         <div class="nav-links">
-            <span onclick="alert('AGI 삐니 고객센터 시스템 활성화됨')">AGI 삐니</span>
-            <span onclick="alert('10대 핵심 모듈 대시보드')">10대 핵심 모듈</span>
-            <span onclick="alert('사회참여 & UBI 연동 완료')">사회참여 & UBI</span>
-            <span onclick="alert('백서 100선 아카이브')">백서 100선</span>
-            <span onclick="alert('FAQ 20선 로드됨')">FAQ 20선</span>
+            <span onclick="triggerNavAction('agi')">AGI 삐니</span>
+            <span onclick="triggerNavAction('modules')">10대 핵심 모듈</span>
+            <span onclick="triggerNavAction('ubi')">사회참여 & UBI</span>
+            <span onclick="triggerNavAction('whitepaper')">백서 100선</span>
+            <span onclick="triggerNavAction('faq')">FAQ 20선</span>
         </div>
         <div>
             <select id="globalLangSelect" class="lang-select" onchange="switchLanguage(this.value)">
-                <option value="ko">🇰🇷 한국어</option>
+                <option value="ko" selected>🇰🇷 한국어</option>
                 <option value="en">🇺🇸 English</option>
                 <option value="zh">🇨🇳 中文</option>
                 <option value="ja">🇯🇵 日本語</option>
@@ -279,69 +357,79 @@
         </div>
     </header>
 
-    <!-- Main Content -->
+    <!-- Main Content Body -->
     <main>
         <!-- Section Header -->
         <div class="section-header">
             <h2 id="mainTitle">2. 10대 핵심 모듈 [개별 고유 명칭 & 로고 광학]</h2>
-            <p id="subTitle">10가지 모듈이 각각 고유의 네온 색상과 로고 아이콘으로 빛납니다[span_1](start_span)[span_1](end_span).</p>
+            <p id="subTitle">10가지 모듈이 각각 고유의 네온 색상과 로고 아이콘으로 빛납니다[span_2](start_span)[span_2](end_span).</p>
         </div>
 
-        <!-- 10 Modules Grid -->
+        <!-- 10 Core Modules Grid -->
         <div class="modules-grid">
-            <div class="module-card" onclick="selectModule('wallet')">
+            <div class="module-card" onclick="selectModule('wallet', '1. 지갑연결')">
                 <div class="icon">💳</div>
                 <h3>1. 지갑연결</h3>
+                <span>DID & Web3 연결</span>
             </div>
-            <div class="module-card" onclick="selectModule('send')">
+            <div class="module-card" onclick="selectModule('send', '2. 송금')">
                 <div class="icon">📤</div>
                 <h3>2. 송금</h3>
+                <span>글로벌 실시간 P2P</span>
             </div>
-            <div class="module-card" onclick="selectModule('pay')">
+            <div class="module-card" onclick="selectModule('pay', '3. 결제')">
                 <div class="icon">🛒</div>
                 <h3>3. 결제</h3>
+                <span>온오프라인 융합 결제</span>
             </div>
-            <div class="module-card" onclick="selectModule('deposit')">
+            <div class="module-card" onclick="selectModule('deposit', '4. 예치')">
                 <div class="icon">🏦</div>
                 <h3>4. 예치</h3>
+                <span>자산 안전 보관 및 이자</span>
             </div>
-            <div class="module-card" onclick="selectModule('reward')">
+            <div class="module-card" onclick="selectModule('reward', '5. 보상')">
                 <div class="icon">🎁</div>
                 <h3>5. 보상</h3>
+                <span>기여도 기반 리워드</span>
             </div>
-            <div class="module-card" onclick="selectModule('ubi')">
+            <div class="module-card" onclick="selectModule('ubi', '6. 기본소득 (UBI)')">
                 <div class="icon">🌐</div>
                 <h3>6. 기본소득 (UBI)</h3>
+                <span>30% 순이익 UBI 배분</span>
             </div>
-            <div class="module-card" onclick="selectModule('tokenswap')">
+            <div class="module-card" onclick="selectModule('tokenswap', '7. 토큰스왑')">
                 <div class="icon">🔄</div>
                 <h3>7. 토큰스왑</h3>
+                <span>다중 자산 교환</span>
             </div>
-            <div class="module-card active" onclick="selectModule('dexswap')">
+            <div class="module-card active" onclick="selectModule('dexswap', '8. DEX스왑')">
                 <div class="icon">⚡</div>
                 <h3>8. DEX스왑</h3>
+                <span>유동성 풀 자동 매칭</span>
             </div>
-            <div class="module-card" onclick="selectModule('lpstaking')">
+            <div class="module-card" onclick="selectModule('lpstaking', '9. LP스테이킹')">
                 <div class="icon">🔒</div>
                 <h3>9. LP스테이킹</h3>
+                <span>유동성 제공자 보상</span>
             </div>
-            <div class="module-card" onclick="selectModule('pibalance')">
+            <div class="module-card" onclick="selectModule('pibalance', '10. 파이수량')">
                 <div class="icon">💎</div>
                 <h3>10. 파이수량</h3>
+                <span>실시간 잔액 및 메트릭</span>
             </div>
         </div>
 
         <!-- Simulation Control Panel -->
         <div class="sim-panel">
             <h3 id="panelTitle">
-                <span>현재 선택된 모듈: [DEX스왑] 시뮬레이션 설정</span>
-                <span id="walletBalance" style="font-size: 1rem; color: #38ef7d;">잔액: 112.00 Test-Pi</span>
+                <span id="currentModuleLabel">현재 선택된 모듈: [DEX스왑] 시뮬레이션 설정</span>
+                <span id="walletBalance" style="font-size: 1.1rem; color: var(--success-green); background: rgba(56,239,125,0.1); padding: 6px 14px; border-radius: 8px; border: 1px solid rgba(56,239,125,0.3);">잔액: 112.00 Test-Pi</span>
             </h3>
             
             <div class="sim-controls">
                 <div class="control-group">
                     <label id="labelAmt">1. 테스트 파이 수량 (Amount)</label>
-                    <input type="number" id="swapAmount" value="10">
+                    <input type="number" id="swapAmount" value="10" min="1">
                 </div>
                 <div class="control-group">
                     <label id="labelAddr">2. 수신자 지갑 주소 / DID (모친 지갑 등)</label>
@@ -352,98 +440,107 @@
                     <select id="nodeSelect">
                         <option>Node-A (아시아 릴레이 노드)</option>
                         <option>Node-B (글로벌 코어 릴레이 노드)</option>
+                        <option>Node-C (유럽 분산 허브 노드)</option>
                     </select>
                 </div>
             </div>
 
-            <button class="action-btn" onclick="executeSwapSimulation()" id="actionBtn">▶ 시뮬레이션 즉시 실행하기</button>
+            <button class="action-btn" onclick="executeActiveSimulation()" id="actionBtn">▶ 시뮬레이션 즉시 실행하기</button>
         </div>
 
         <!-- Terminal Log Box -->
-        <div class="terminal-box" id="simulationLog">
-            <div>[오전 11:20:40] [시스템] 60개국어 다국어 엔진 및 메인넷 대시보드 구동 완료[span_2](start_span)[span_2](end_span).</div>
-            <div>[오전 11:20:42] [모듈: DEX스왑] 유동성 풀 자동 매칭 시스템 대기 중[span_3](start_span)[span_3](end_span).</div>
+        <div class="terminal-container">
+            <div class="terminal-header">
+              <span>🖥️ HK WorldBank Distributed Network & Real-time Log Stream</span>
+              <span style="color: var(--neon-cyan);">Status: SECURE & CONNECTED</span>
+            </div>
+            <div class="terminal-box" id="simulationLog">
+                <div>[오전 11:20:40] [시스템] 60개국어 다국어 변환 엔진 및 분산 메인넷 대시보드 구동 완료[span_3](start_span)[span_3](end_span).</div>
+                <div>[오전 11:20:42] [모듈: DEX스왑] LP 유동성 풀 자동 매칭 시스템 정상 대기 중[span_4](start_span)[span_4](end_span).</div>
+                <div>[오전 11:20:45] [안전보안] 지문 인증 및 24개 단어 Seed Phrase 보안 레이어 활성화.</div>
+            </div>
         </div>
     </main>
 
     <!-- Footer -->
     <footer>
-        <p>Copyright ⓒ 체어맨 이재완 All Rights Reserved. | 문의: <a href="mailto:support@hkwb.world">support@hkwb.world</a></p>
+        <p>Copyright ⓒ 체어맨 이재완 All Rights Reserved. | 문의 및 고객지원: <a href="mailto:support@hkwb.world">support@hkwb.world</a></p>
     </footer>
 
-    <!-- JavaScript Engine -->
+    <!-- JavaScript Execution & Engine -->
     <script>
-        // 60개국어 다국어 사전 데이터베이스
+        // 60개국어 지원 확장 다국어 사전 데이터베이스
         const i18nDictionary = {
             ko: {
                 mainTitle: "2. 10대 핵심 모듈 [개별 고유 명칭 & 로고 광학]",
-                subTitle: "10가지 모듈이 각각 고유의 네온 색상과 로고 아이콘으로 빛납니다[span_4](start_span)[span_4](end_span).",
-                panelHeader: "현재 선택된 모듈: [DEX스왑] 시뮬레이션 설정",
+                subTitle: "10가지 모듈이 각각 고유의 네온 색상과 로고 아이콘으로 빛납니다[span_5](start_span)[span_5](end_span).",
+                panelHeader: "현재 선택된 모듈: [{modName}] 시뮬레이션 설정",
                 labelAmt: "1. 테스트 파이 수량 (Amount)",
                 labelAddr: "2. 수신자 지갑 주소 / DID (모친 지갑 등)",
                 labelNode: "3. 분산 연동망 노드 선택",
                 actionBtn: "▶ 시뮬레이션 즉시 실행하기",
                 successSwap: "매칭 성공! [수신 주소: {recipient}] [정상 입금: +{amount} Test-Pi] (Node-A 아시아 릴레이 연동 완료)",
-                langChanged: "60개국어 엔진에 의해 [한국어]로 뼈속까지 실시간 변환되었습니다[span_5](start_span)[span_5](end_span)."
+                langChanged: "60개국어 엔진에 의해 [한국어]로 뼈속까지 실시간 변환되었습니다[span_6](start_span)[span_6](end_span)."
             },
             en: {
                 mainTitle: "2. 10 Core Modules [Custom Colors & Optical Logos]",
-                subTitle: "Each of the 10 modules shines with unique neon colors and logo icons[span_6](start_span)[span_6](end_span).",
-                panelHeader: "Current Module: [DEX Swap] Simulation Settings",
+                subTitle: "Each of the 10 modules shines with unique neon colors and logo icons[span_7](start_span)[span_7](end_span).",
+                panelHeader: "Current Module: [{modName}] Simulation Settings",
                 labelAmt: "1. Test Pi Amount",
                 labelAddr: "2. Recipient Wallet Address / DID",
                 labelNode: "3. Distributed Relay Node",
                 actionBtn: "▶ Run Simulation Instantly",
                 successSwap: "Match Success! [Recipient: {recipient}] [Deposit: +{amount} Test-Pi] (Node-A Relay Connected)",
-                langChanged: "Real-time localization successfully applied across 60 global languages [English][span_7](start_span)[span_7](end_span)."
+                langChanged: "Real-time localization successfully applied across 60 global languages [English][span_8](start_span)[span_8](end_span)."
             },
             zh: {
                 mainTitle: "2. 十大核心模块 [独立专属名称与标志光学]",
-                subTitle: "十个模块各自闪耀着独特的霓虹色彩与图标[span_8](start_span)[span_8](end_span).",
-                panelHeader: "当前选中模块: [DEX 兑换] 模拟设置",
+                subTitle: "十个模块各自闪耀着独特的霓虹色彩与图标[span_9](start_span)[span_9](end_span).",
+                panelHeader: "当前选中模块: [{modName}] 模拟设置",
                 labelAmt: "1. 测试派数量 (Amount)",
                 labelAddr: "2. 接收方钱包地址 / DID",
                 labelNode: "3. 分布式中继节点选择",
                 actionBtn: "▶ 立即执行模拟",
                 successSwap: "匹配成功！[接收地址: {recipient}] [入账: +{amount} Test-Pi] (Node-A 中继已连接)",
-                langChanged: "已通过60国语言引擎实时转换为 [中文][span_9](start_span)[span_9](end_span)."
+                langChanged: "已通过60国语言引擎实时转换为 [中文][span_10](start_span)[span_10](end_span)."
             },
             ja: {
                 mainTitle: "2. 10大コアモジュール [個別固有名称＆ロゴ光学]",
-                subTitle: "10個のモジュールがそれぞれ独自のネオンカラーとロゴアイコンで輝きます[span_10](start_span)[span_10](end_span).",
-                panelHeader: "現在選択中のモジュール: [DEXスワップ] シミュレーション設定",
+                subTitle: "10個のモジュールがそれぞれ独自のネオンカラーとロゴアイコンで輝きます[span_11](start_span)[span_11](end_span).",
+                panelHeader: "現在選択中のモジュール: [{modName}] シミュレーション設定",
                 labelAmt: "1. テストパイ数量 (Amount)",
                 labelAddr: "2. 受取人ウォレットアドレス / DID",
                 labelNode: "3. 分散リレーノード選択",
                 actionBtn: "▶ シミュレーション即時実行",
                 successSwap: "マッチング成功！[受取アドレス: {recipient}] [入金: +{amount} Test-Pi] (Node-A 連携完了)",
-                langChanged: "60ヵ国語エンジンにより [日本語] へリアルタイム変換されました[span_11](start_span)[span_11](end_span)."
+                langChanged: "60ヵ国語エンジンにより [日本語] へリアルタイム変換されました[span_12](start_span)[span_12](end_span)."
             },
             vi: {
                 mainTitle: "2. 10 Mô-đun cốt lõi",
-                subTitle: "Các mô-đun tỏa sáng với màu sắc độc đáo[span_12](start_span)[span_12](end_span).",
-                panelHeader: "Mô-đun hiện tại: [Hoán đổi DEX]",
+                subTitle: "Các mô-đun tỏa sáng với màu sắc độc đáo[span_13](start_span)[span_13](end_span).",
+                panelHeader: "Mô-đun hiện tại: [{modName}]",
                 labelAmt: "1. Số lượng Test Pi",
                 labelAddr: "2. Địa chỉ ví người nhận / DID",
                 labelNode: "3. Chọn nút mạng",
                 actionBtn: "▶ Chạy mô phỏng ngay",
                 successSwap: "Khớp thành công! [Người nhận: {recipient}] [Đã nạp: +{amount} Test-Pi]",
-                langChanged: "Đã chuyển đổi sang [Tiếng Việt] qua động cơ 60 ngôn ngữ[span_13](start_span)[span_13](end_span)."
+                langChanged: "Đã chuyển đổi sang [Tiếng Việt] qua động cơ 60 ngôn ngữ[span_14](start_span)[span_14](end_span)."
             },
             th: {
                 mainTitle: "2. 10 โมดูลหลัก",
-                subTitle: "โมดูลทั้งหมดสว่างด้วยสีนีออน[span_14](start_span)[span_14](end_span).",
-                panelHeader: "โมดูลปัจจุบัน: [DEX Swap]",
+                subTitle: "โมดูลทั้งหมดสว่างด้วยสีนีออน[span_15](start_span)[span_15](end_span).",
+                panelHeader: "โมดูลปัจจุบัน: [{modName}]",
                 labelAmt: "1. จำนวน Test Pi",
                 labelAddr: "2. ที่อยู่กระเป๋าเงินผู้รับ / DID",
                 labelNode: "3. เลือกโหนดเครือข่าย",
                 actionBtn: "▶ รันการจำลองทันที",
                 successSwap: "จับคู่สำเร็จ! [ผู้รับ: {recipient}] [ฝากเงิน: +{amount} Test-Pi]",
-                langChanged: "แปลเป็น [ภาษาไทย] ผ่านเอ็นจิ้น 60 ภาษาเรียบร้อยแล้ว[span_15](start_span)[span_15](end_span)."
+                langChanged: "แปลเป็น [ภาษาไทย] ผ่านเอ็นจิ้น 60 ภาษาเรียบร้อยแล้ว[span_16](start_span)[span_16](end_span)."
             }
         };
 
         let currentLang = 'ko';
+        let activeModuleName = 'DEX스왑';
 
         // 60개국어 실시간 전환 함수
         function switchLanguage(langCode) {
@@ -452,7 +549,10 @@
             
             document.getElementById('mainTitle').innerText = dict.mainTitle;
             document.getElementById('subTitle').innerText = dict.subTitle;
-            document.getElementById('panelTitle').innerHTML = `<span>${dict.panelHeader}</span><span id="walletBalance" style="font-size: 1rem; color: #38ef7d;">잔액: 112.00 Test-Pi</span>`;
+            
+            const panelHeaderFormatted = dict.panelHeader.replace('{modName}', activeModuleName);
+            document.getElementById('currentModuleLabel').innerText = `현재 선택된 모듈: [${activeModuleName}] 시뮬레이션 설정`;
+            
             document.getElementById('labelAmt').innerText = dict.labelAmt;
             document.getElementById('labelAddr').innerText = dict.labelAddr;
             document.getElementById('labelNode').innerText = dict.labelNode;
@@ -463,18 +563,35 @@
             logContainer.innerHTML = `<div>[${timestamp}] [시스템] ${dict.langChanged}</div>` + logContainer.innerHTML;
         }
 
-        // 모듈 선택 시각 효과
-        function selectModule(moduleName) {
+        // 모듈 선택 시각 효과 및 상태 변경
+        function selectModule(moduleKey, moduleDisplayName) {
             document.querySelectorAll('.module-card').forEach(card => card.classList.remove('active'));
             event.currentTarget.classList.add('active');
             
+            activeModuleName = moduleDisplayName.split('. ')[1] || moduleDisplayName;
+            document.getElementById('currentModuleLabel').innerText = `현재 선택된 모듈: [${activeModuleName}] 시뮬레이션 설정`;
+
             const timestamp = new Date().toLocaleTimeString();
             const logContainer = document.getElementById('simulationLog');
-            logContainer.innerHTML = `<div>[${timestamp}] [모듈 전환] [${moduleName.toUpperCase()} 모듈]이 활성화되었습니다.</div>` + logContainer.innerHTML;
+            logContainer.innerHTML = `<div>[${timestamp}] [모듈 전환] [${activeModuleName}] 모듈이 정상 활성화되었습니다.</div>` + logContainer.innerHTML;
         }
 
-        // DEX 스왑 실행 및 수신자 지갑 정상 플러스(+) 입금 매칭 엔진
-        function executeSwapSimulation() {
+        // 상단 네비게이션바 메뉴 액션
+        function triggerNavAction(menuType) {
+            const timestamp = new Date().toLocaleTimeString();
+            const logContainer = document.getElementById('simulationLog');
+            let msg = "";
+            if(menuType === 'agi') msg = "AGI 삐니 고객센터 및 AI 서포트 모듈 호출 완료.";
+            else if(menuType === 'modules') msg = "10대 핵심 모듈 전체 대시보드 동기화 완료.";
+            else if(menuType === 'ubi') msg = "사회참여 및 30% UBI 배분 스마트컨트랙트 조회 완료.";
+            else if(menuType === 'whitepaper') msg = "HK 백서 100선 아카이브 로드 완료.";
+            else if(menuType === 'faq') msg = "FAQ 20선 데이터베이스 인덱싱 완료.";
+
+            logContainer.innerHTML = `<div>[${timestamp}] [내비게이션] ${msg}</div>` + logContainer.innerHTML;
+        }
+
+        // 활성화된 모듈에 따른 시뮬레이션 실행 엔진 (정상적인 잔액 플러스(+) 입금 처리)
+        function executeActiveSimulation() {
             const amountInput = document.getElementById('swapAmount');
             const recipientInput = document.getElementById('recipientAddress');
             const logContainer = document.getElementById('simulationLog');
@@ -484,15 +601,13 @@
             const timestamp = new Date().toLocaleTimeString();
             const dict = i18nDictionary[currentLang] || i18nDictionary['en'];
 
-            // 로그 메시지 템플릿 바인딩
             let logText = dict.successSwap
                 .replace('{recipient}', recipient)
                 .replace('{amount}', amount);
 
-            // 터미널 로그 출력
-            logContainer.innerHTML = `<div>[${timestamp}] [모듈: DEX스왑] ${logText}</div>` + logContainer.innerHTML;
+            logContainer.innerHTML = `<div>[${timestamp}] [모듈: ${activeModuleName}] ${logText}</div>` + logContainer.innerHTML;
 
-            // 지갑 잔액 플러스(+) 가산 반영
+            // 지갑 잔액 플러스(+) 가산 반영 (마이너스 방지)
             updateWalletBalance(amount);
         }
 
@@ -502,7 +617,7 @@
             if (balanceElement) {
                 let currentText = balanceElement.innerText.replace(/[^0-9.]/g, '');
                 let currentBalance = parseFloat(currentText) || 112.00;
-                currentBalance += deltaAmount; // 마이너스가 아닌 정확한 플러스(+) 반영
+                currentBalance += deltaAmount; // 정확한 플러스(+) 반영
                 balanceElement.innerText = `잔액: ${currentBalance.toFixed(2)} Test-Pi`;
             }
         }
