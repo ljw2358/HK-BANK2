@@ -201,53 +201,43 @@
       font-size: 1rem;
       color: #f3e8ff;
       line-height: 1.6;
+      margin-bottom: 16px;
     }
 
     .policy-box strong {
       color: #fff;
     }
 
-    /* 8. 10 Decentralized Networks */
-    .network-list {
-      display: flex;
-      flex-direction: column;
+    /* Media Integration Section (TikTok & YouTube) */
+    .media-integration {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 12px;
     }
 
-    .network-item {
+    .media-card {
       background: #0f0a1c;
       border: 1px solid var(--card-border);
       padding: 16px;
       border-radius: 14px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
     }
 
-    .network-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .media-card:hover {
+      border-color: var(--accent-neon);
+    }
+
+    .media-icon {
+      font-size: 1.8rem;
       margin-bottom: 6px;
     }
 
-    .network-num {
-      background: var(--primary-purple);
-      color: #fff;
-      font-size: 0.85rem;
-      font-weight: bold;
-      padding: 4px 8px;
-      border-radius: 6px;
-    }
-
-    .network-title {
-      font-size: 1.05rem;
+    .media-name {
+      font-size: 0.95rem;
       font-weight: bold;
       color: var(--text-white);
-    }
-
-    .network-desc {
-      font-size: 0.9rem;
-      color: var(--text-gray);
-      padding-left: 34px;
-      line-height: 1.5;
     }
 
     /* API Status Indicator */
@@ -359,91 +349,23 @@
     </div>
     <div class="impact-stats">
       <div class="stat-card">
-        <div class="stat-value" id="profitRatioDisplay">30% ~ 60%</div>
-        <div class="stat-label">자동 사회환원 비율 설정</div>
+        <div class="stat-value">30%</div>
+        <div class="stat-label">직접 결정 환원 비율</div>
       </div>
     </div>
     <div class="policy-box">
-      💡 <strong>운영 원칙:</strong> 플랫폼에서 발생하는 순수익 중 최대 60%를 사회에 환원하며, 이 중 <strong>30%는 회장님께서 직접 용처를 결정</strong>하여 집행합니다. 나머지는 글로벌 UBI 기본소득 및 재단 기금으로 투명하게 운용됩니다.
+      💡 <strong>운영 원칙:</strong> 플랫폼 순수익 중 일정 비율을 사회에 환원하며, 이 중 <strong>30%는 회장님께서 직접 용처를 결정</strong>하여 집행합니다.
     </div>
-  </section>
 
-  <!-- 8. 10 Decentralized Networks -->
-  <section class="section-card">
-    <div class="section-header">
-      <div class="section-title">10대 분산 연동망 상세 설계</div>
-      <span class="badge badge-purple" style="background:#6366f1; color:#fff;">Multi-Node</span>
-    </div>
-    <div class="network-list">
-      <div class="network-item">
-        <div class="network-header">
-          <span class="network-num">01</span>
-          <span class="network-title">노드 탐색 & 핸드셰이크</span>
-        </div>
-        <div class="network-desc">참여 분산 노드를 실시간 검색하고 신뢰 상태 검증 및 연결.</div>
+    <!-- TikTok & YouTube Integration -->
+    <div class="media-integration">
+      <div class="media-card" onclick="openMediaLink('tiktok')">
+        <div class="media-icon">🎵</div>
+        <div class="media-name">TikTok 연동</div>
       </div>
-      <div class="network-item">
-        <div class="network-header">
-          <span class="network-num">02</span>
-          <span class="network-title">DID 계정 및 권한 인증</span>
-        </div>
-        <div class="network-desc">중앙 서버 없이 DID 기반으로 사용자 및 노드 자격 검증.</div>
-      </div>
-      <div class="network-item">
-        <div class="network-header">
-          <span class="network-num">03</span>
-          <span class="network-title">데이터 분할 & 암호화</span>
-        </div>
-        <div class="network-desc">전송 데이터를 블록 단위로 분해 후 256비트 암호화 분산 보관.</div>
-      </div>
-      <div class="network-item">
-        <div class="network-header">
-          <span class="network-num">04</span>
-          <span class="network-title">합의 알고리즘 & 동기화</span>
-        </div>
-        <div class="network-desc">PoS 및 BFT 하이브리드 결합으로 실시간 원장 동기화.</div>
-      </div>
-      <div class="network-item">
-        <div class="network-header">
-          <span class="network-num">05</span>
-          <span class="network-title">멀티네트워크 부하 분산</span>
-        </div>
-        <div class="network-desc">트래픽 폭주 시 유동 노드로 트랜잭션을 분산 중계하는 릴레이 망.</div>
-      </div>
-      <div class="network-item">
-        <div class="network-header">
-          <span class="network-num">06</span>
-          <span class="network-title">스마트 계약 자동실행</span>
-        </div>
-        <div class="network-desc">조건 충족 시 분산망 전체에 계약 내용을 동시 실행 및 기록.</div>
-      </div>
-      <div class="network-item">
-        <div class="network-header">
-          <span class="network-num">07</span>
-          <span class="network-title">온체인 파이널리티</span>
-        </div>
-        <div class="network-desc">처리된 거래 내역을 수정 불가능한 최종 분산 원장에 확정 저장.</div>
-      </div>
-      <div class="network-item">
-        <div class="network-header">
-          <span class="network-num">08</span>
-          <span class="network-title">크로스체인 브릿지</span>
-        </div>
-        <div class="network-desc">이종 블록체인 간 자산과 데이터를 안전하게 상호 전송 및 연동.</div>
-      </div>
-      <div class="network-item">
-        <div class="network-header">
-          <span class="network-num">09</span>
-          <span class="network-title">제로 지식 증명(ZKP) 보안</span>
-        </div>
-        <div class="network-desc">개인정보 노출 없이 거래 유효성을 완벽하게 증명하는 보안 프로토콜.</div>
-      </div>
-      <div class="network-item">
-        <div class="network-header">
-          <span class="network-num">10</span>
-          <span class="network-title">자율 치유 및 복구 시스템</span>
-        </div>
-        <div class="network-desc">노드 오류나 공격 발생 시 네트워크 스스로 진단 및 복구 수행.</div>
+      <div class="media-card" onclick="openMediaLink('youtube')">
+        <div class="media-icon">▶️</div>
+        <div class="media-name">YouTube 연동</div>
       </div>
     </div>
   </section>
@@ -459,20 +381,12 @@
       REFERRAL_ID: "ljw2358"
     };
 
-    // 초기화 및 백엔드 데이터 동기화
     window.addEventListener('DOMContentLoaded', async () => {
       document.getElementById('refIdDisplay').innerText = CONFIG.REFERRAL_ID;
       document.getElementById('refIdSpan').innerText = CONFIG.REFERRAL_ID;
-      
-      try {
-        // 백엔드 API 상태 및 통계 데이터 비동기 호출 시뮬레이션
-        console.log("HK WorldBank Backend API initialized successfully.");
-      } catch (error) {
-        console.error("API Connection Error:", error);
-      }
+      console.log("HK WorldBank Backend API initialized successfully.");
     });
 
-    // 10대 핵심 모듈 백엔드 API 핸들러
     async function executeCoreApi(moduleType) {
       const endpoints = {
         wallet: '/wallet/connect',
@@ -492,15 +406,20 @@
 
       try {
         console.log(`[API Request] Executing ${moduleType} via ${CONFIG.API_ENDPOINT + targetUrl}`);
-        // 실제 API 호출 템플릿:
-        // const response = await fetch(CONFIG.API_ENDPOINT + targetUrl, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ ref: CONFIG.REFERRAL_ID }) });
-        // const data = await response.json();
-        
         alert(`[HK WorldBank API] ${moduleType.toUpperCase()} 모듈 프로세스가 정상 실행되었습니다.`);
       } catch (err) {
         alert("통신 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
       }
     }
+
+    function openMediaLink(platform) {
+      if (platform === 'tiktok') {
+        window.open('https://www.tiktok.com/@Hyekong2026', '_blank');
+      } else if (platform === 'youtube') {
+        window.open('https://www.youtube.com/@Hyekong2026', '_blank');
+      }
+    }
   </script>
 </body>
 </html>
+
