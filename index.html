@@ -3,19 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HK WorldBank</title>
+  <title>HK WorldBank · AI 오피스 센터</title>
   <style>
     :root {
-      --bg-main: #090612;
-      --bg-card: #130c24;
-      --bg-card-soft: #1a1130;
-      --bg-panel: #21153d;
-      --accent-purple: #8b5cf6;
-      --accent-neon: #22d3ee;
-      --accent-pink: #ec4899;
-      --text-main: #f8fafc;
-      --text-muted: #b3aad0;
-      --border-glow: rgba(139, 92, 246, 0.35);
+      --bg-950: #040711;
+      --bg-900: #070d1f;
+      --bg-850: #0b142d;
+      --card-bg: rgba(11, 20, 46, 0.82);
+      --card-soft: rgba(16, 29, 64, 0.75);
+      --text-main: #eef4ff;
+      --text-muted: #93a6cc;
+      --line-soft: rgba(98, 138, 255, 0.24);
+      --line-glow: rgba(77, 166, 255, 0.55);
+      --blue-glow: #3b82f6;
+      --cyan-glow: #22d3ee;
+      --purple-glow: #a855f7;
+      --pink-glow: #ec4899;
+      --emerald: #10b981;
+      --amber: #f59e0b;
+      --rose: #f43f5e;
     }
 
     * {
@@ -24,618 +30,1009 @@
       padding: 0;
     }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
-      background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.18), transparent 45%),
-                  radial-gradient(circle at bottom left, rgba(34, 211, 238, 0.12), transparent 45%),
-                  var(--bg-main);
+    html, body {
+      min-height: 100%;
+      background:
+        radial-gradient(circle at 15% 12%, rgba(59, 130, 246, 0.28), transparent 42%),
+        radial-gradient(circle at 82% 18%, rgba(168, 85, 247, 0.24), transparent 44%),
+        radial-gradient(circle at 50% 72%, rgba(34, 211, 238, 0.14), transparent 52%),
+        linear-gradient(180deg, #040711 0%, #070e22 52%, #040814 100%);
       color: var(--text-main);
-      line-height: 1.65;
-      min-height: 100vh;
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
+      font-size: 13px;
+      line-height: 1.45;
+      overflow-x: hidden;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    .ambient-orb {
+      position: fixed;
+      border-radius: 999px;
+      filter: blur(85px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.45;
+    }
+    .orb-1 {
+      width: 340px;
+      height: 340px;
+      top: -80px;
+      left: -60px;
+      background: rgba(59, 130, 246, 0.45);
+    }
+    .orb-2 {
+      width: 360px;
+      height: 360px;
+      top: 140px;
+      right: -90px;
+      background: rgba(168, 85, 247, 0.36);
+    }
+    .orb-3 {
+      width: 300px;
+      height: 300px;
+      bottom: -80px;
+      left: 35%;
+      background: rgba(34, 211, 238, 0.25);
     }
 
-    .container {
-      max-width: 1140px;
+    .app-shell {
+      position: relative;
+      z-index: 1;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 14px 16px 36px;
     }
 
-    /* 상단 헤더 */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(14px);
-      background: rgba(9, 6, 18, 0.88);
-      border-bottom: 1px solid var(--border-glow);
-    }
-
-    .header-inner {
+    /* Top Bar */
+    .topbar {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      padding: 14px 0;
-      flex-wrap: wrap;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      background: rgba(9, 17, 39, 0.85);
+      border: 1px solid var(--line-soft);
+      box-shadow:
+        0 0 24px rgba(59, 130, 246, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(14px);
+      margin-bottom: 12px;
     }
 
-    .brand-block {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .brand-title {
-      font-size: 1.38rem;
-      font-weight: 800;
-      letter-spacing: 0.3px;
-      background: linear-gradient(90deg, #c084fc, #22d3ee);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .id-badge {
-      font-size: 0.86rem;
-      color: var(--accent-neon);
-      font-weight: 700;
-    }
-
-    .header-status {
+    .brand-group {
       display: flex;
       align-items: center;
       gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 10px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.26), rgba(168, 85, 247, 0.26));
+      border: 1px solid rgba(115, 173, 255, 0.45);
+      box-shadow: 0 0 16px rgba(59, 130, 246, 0.35);
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+      color: #ffffff;
+    }
+
+    .brand-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--cyan-glow);
+      box-shadow: 0 0 10px var(--cyan-glow);
+    }
+
+    .id-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 9px;
+      border-radius: 8px;
+      background: rgba(15, 28, 62, 0.9);
+      border: 1px solid rgba(98, 138, 255, 0.32);
+      color: #b7ccff;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .id-chip strong {
+      color: #67e8f9;
+      letter-spacing: 0.04em;
+    }
+
+    .top-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       flex-wrap: wrap;
     }
 
     .status-pill {
-      padding: 7px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 11px;
       border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      background: rgba(139, 92, 246, 0.2);
-      border: 1px solid rgba(192, 132, 252, 0.45);
-      color: #f3e8ff;
-    }
-
-    .lang-pill {
-      padding: 7px 14px;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      background: rgba(34, 211, 238, 0.14);
-      border: 1px solid rgba(34, 211, 238, 0.45);
+      background: linear-gradient(90deg, rgba(34, 211, 238, 0.16), rgba(168, 85, 247, 0.18));
+      border: 1px solid rgba(74, 222, 255, 0.5);
+      box-shadow: 0 0 16px rgba(34, 211, 238, 0.25);
       color: #a5f3fc;
+      font-size: 11px;
+      font-weight: 700;
     }
 
-    /* 섹션 공통 */
-    section {
-      padding: 40px 0;
+    .pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #22d3ee;
+      box-shadow: 0 0 8px #22d3ee;
+      animation: pulse 1.8s infinite;
     }
 
-    .section-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-glow);
-      border-radius: 22px;
-      padding: 30px;
-      box-shadow: 0 14px 38px rgba(0, 0, 0, 0.45);
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.35); opacity: 0.65; }
     }
 
-    .section-num {
-      display: inline-block;
-      font-size: 0.8rem;
-      font-weight: 800;
-      color: var(--accent-neon);
-      letter-spacing: 0.8px;
-      margin-bottom: 6px;
+    /* Hero Cover */
+    .hero-cover {
+      position: relative;
+      border-radius: 18px;
+      padding: 18px 20px;
+      margin-bottom: 12px;
+      background:
+        linear-gradient(125deg, rgba(22, 46, 108, 0.78) 0%, rgba(12, 22, 54, 0.88) 52%, rgba(44, 20, 86, 0.72) 100%);
+      border: 1px solid rgba(112, 166, 255, 0.42);
+      box-shadow:
+        0 0 36px rgba(59, 130, 246, 0.24),
+        0 0 60px rgba(168, 85, 247, 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.14);
+      overflow: hidden;
     }
 
-    h1 {
-      font-size: clamp(1.85rem, 3.6vw, 2.75rem);
-      line-height: 1.25;
-      margin-bottom: 14px;
+    .hero-cover::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: 18px;
+      padding: 1px;
+      background: linear-gradient(90deg, rgba(56, 189, 248, 0.65), rgba(168, 85, 247, 0.6), rgba(236, 72, 153, 0.45));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
     }
 
-    h2 {
-      font-size: clamp(1.4rem, 2.4vw, 1.85rem);
-      margin-bottom: 10px;
-    }
-
-    p {
-      color: var(--text-muted);
-    }
-
-    /* 표지 */
-    .hero {
-      padding-top: 44px;
-      padding-bottom: 20px;
-    }
-
-    .hero-box {
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.24), rgba(19, 12, 36, 0.96) 58%, rgba(34, 211, 238, 0.14));
-      border: 1px solid rgba(192, 132, 252, 0.45);
-      border-radius: 24px;
-      padding: 38px 30px;
-    }
-
-    .hero-tags {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-
-    .tag {
-      font-size: 0.85rem;
-      padding: 7px 13px;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      color: #f8fafc;
-    }
-
-    /* 1번: AIG 가동 중 & 60개국어 */
-    .agi-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-      margin-top: 18px;
-    }
-
-    .mini-box {
-      background: var(--bg-card-soft);
-      border: 1px solid rgba(139, 92, 246, 0.28);
-      border-radius: 16px;
-      padding: 20px;
-    }
-
-    .mini-box strong {
-      display: block;
-      font-size: 1.05rem;
-      color: #ffffff;
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(125, 211, 252, 0.35);
+      color: #bae6fd;
+      font-size: 11px;
+      font-weight: 700;
       margin-bottom: 8px;
     }
 
-    .detail-list {
-      margin-top: 10px;
-      padding-left: 18px;
+    .hero-title {
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1.28;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      text-shadow: 0 0 22px rgba(96, 165, 250, 0.55);
+      margin-bottom: 6px;
+    }
+
+    .hero-sub {
+      font-size: 12px;
+      color: #c3d4f7;
+      max-width: 780px;
+      margin-bottom: 12px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 6px 11px;
+      border-radius: 9px;
+      font-size: 11.5px;
+      font-weight: 700;
+      border: 1px solid var(--line-soft);
+      background: rgba(16, 30, 66, 0.85);
+      color: #e6efff;
+      cursor: pointer;
+      transition: all 0.16s ease;
+    }
+
+    .btn:hover {
+      border-color: var(--line-glow);
+      box-shadow: 0 0 14px rgba(59, 130, 246, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+      border-color: rgba(147, 197, 253, 0.6);
+      color: #ffffff;
+      box-shadow: 0 0 18px rgba(59, 130, 246, 0.42);
+    }
+
+    .btn-cyan {
+      background: rgba(14, 116, 144, 0.35);
+      border-color: rgba(34, 211, 238, 0.48);
+      color: #a5f3fc;
+    }
+
+    .btn-warn {
+      background: rgba(180, 83, 9, 0.28);
+      border-color: rgba(251, 191, 36, 0.5);
+      color: #fde68a;
+    }
+
+    .btn-danger {
+      background: rgba(190, 18, 60, 0.28);
+      border-color: rgba(251, 113, 133, 0.55);
+      color: #fecdd3;
+    }
+
+    /* Section Card */
+    .panel {
+      border-radius: 16px;
+      padding: 13px 15px;
+      margin-bottom: 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--line-soft);
+      box-shadow:
+        0 0 24px rgba(30, 64, 175, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(12px);
+    }
+
+    .panel-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .panel-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.35), rgba(236, 72, 153, 0.35));
+      border: 1px solid rgba(216, 180, 254, 0.45);
+      color: #f5d0fe;
+    }
+
+    .panel-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: #ffffff;
+      text-shadow: 0 0 12px rgba(96, 165, 250, 0.35);
+    }
+
+    .panel-sub {
+      font-size: 11.5px;
       color: var(--text-muted);
-      font-size: 0.92rem;
     }
 
-    .detail-list li {
-      margin-bottom: 5px;
+    /* AGI Office Box */
+    .agi-box {
+      border-radius: 12px;
+      padding: 11px 13px;
+      background: linear-gradient(135deg, rgba(20, 35, 82, 0.85), rgba(32, 22, 68, 0.85));
+      border: 1px solid rgba(168, 85, 247, 0.36);
+      box-shadow: inset 0 0 24px rgba(124, 58, 237, 0.15);
     }
 
-    /* 2번: 10대 핵심 모듈 */
+    .agi-reply {
+      font-size: 12px;
+      color: #dce8ff;
+      margin-bottom: 8px;
+      padding: 8px 10px;
+      border-radius: 9px;
+      background: rgba(6, 12, 28, 0.65);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+    }
+
+    .agi-controls {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    .input-compact {
+      flex: 1;
+      min-width: 190px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(112, 152, 255, 0.35);
+      background: rgba(6, 12, 28, 0.85);
+      color: #ffffff;
+      font-size: 12px;
+      outline: none;
+    }
+
+    .input-compact:focus {
+      border-color: var(--cyan-glow);
+      box-shadow: 0 0 10px rgba(34, 211, 238, 0.28);
+    }
+
+    /* Compact 10-Module Grid */
     .modules-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin-top: 22px;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 10px;
     }
 
-    @media (max-width: 780px) {
+    @media (max-width: 900px) {
       .modules-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .mod-card {
+      text-align: left;
+      padding: 9px 10px;
+      border-radius: 11px;
+      background: var(--card-soft);
+      border: 1px solid rgba(105, 146, 255, 0.25);
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .mod-card:hover {
+      border-color: rgba(34, 211, 238, 0.65);
+      box-shadow: 0 0 16px rgba(59, 130, 246, 0.28);
+      transform: translateY(-1px);
+    }
+
+    .mod-card.active {
+      background: linear-gradient(145deg, rgba(37, 99, 235, 0.34), rgba(126, 34, 206, 0.34));
+      border-color: #67e8f9;
+      box-shadow: 0 0 18px rgba(34, 211, 238, 0.32);
+    }
+
+    .mod-name {
+      font-size: 12px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 2px;
+    }
+
+    .mod-desc {
+      font-size: 10.5px;
+      color: #9fb4de;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Workspace Tabs & Content */
+    .workspace {
+      border-radius: 13px;
+      padding: 12px 14px;
+      background: rgba(7, 14, 34, 0.88);
+      border: 1px solid rgba(105, 146, 255, 0.32);
+    }
+
+    .tab-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(105, 146, 255, 0.18);
+    }
+
+    .tab-btn {
+      padding: 5px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(105, 146, 255, 0.25);
+      background: rgba(15, 27, 60, 0.75);
+      color: #b5c8f0;
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.45), rgba(168, 85, 247, 0.45));
+      border-color: #7dd3fc;
+      color: #ffffff;
+      box-shadow: 0 0 12px rgba(59, 130, 246, 0.35);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 760px) {
+      .form-grid {
         grid-template-columns: 1fr;
       }
     }
 
-    .module-item {
-      background: var(--bg-card-soft);
-      border: 1px solid rgba(139, 92, 246, 0.28);
-      border-radius: 16px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      transition: transform 0.18s ease, border-color 0.18s ease;
-    }
-
-    .module-item:hover {
-      transform: translateY(-2px);
-      border-color: var(--accent-neon);
-    }
-
-    .module-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .module-name {
-      font-weight: 800;
-      font-size: 1.05rem;
-      color: #ffffff;
-    }
-
-    .module-badge {
-      font-size: 0.75rem;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(34, 211, 238, 0.15);
-      color: var(--accent-neon);
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .module-desc {
-      font-size: 0.93rem;
-      color: var(--text-muted);
-    }
-
-    .flow-box {
-      background: var(--bg-panel);
-      border-left: 3px solid var(--accent-purple);
-      border-radius: 10px;
-      padding: 12px 14px;
-      font-size: 0.88rem;
-      color: #e2e8f0;
-    }
-
-    .flow-box strong {
+    .field-label {
       display: block;
-      color: #c4b5fd;
-      margin-bottom: 4px;
-      font-size: 0.84rem;
+      font-size: 10.5px;
+      color: #9cb2dc;
+      margin-bottom: 3px;
+      font-weight: 600;
     }
 
-    /* 3번: 순수익 사회환원 (기존 5번 이동) */
-    .profit-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-      margin-top: 20px;
+    .field-input, .field-select {
+      width: 100%;
+      padding: 6px 9px;
+      border-radius: 8px;
+      border: 1px solid rgba(112, 152, 255, 0.32);
+      background: rgba(5, 10, 24, 0.9);
+      color: #ffffff;
+      font-size: 11.5px;
     }
 
-    .profit-card {
-      background: var(--bg-card-soft);
-      border: 1px solid rgba(236, 72, 153, 0.35);
-      border-radius: 16px;
-      padding: 22px;
+    /* Deposit / Early Termination List */
+    .deposit-item {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: rgba(14, 26, 58, 0.78);
+      border: 1px solid rgba(110, 150, 255, 0.22);
+      margin-bottom: 7px;
     }
 
-    .profit-ratio {
-      font-size: 1.7rem;
+    .deposit-meta strong {
+      color: #ffffff;
+      font-size: 12px;
+    }
+
+    .deposit-meta span {
+      display: block;
+      font-size: 11px;
+      color: #9cb2dc;
+    }
+
+    .badge-status {
+      display: inline-block;
+      padding: 2px 7px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 700;
+      margin-left: 6px;
+    }
+
+    .badge-active {
+      background: rgba(16, 185, 129, 0.2);
+      color: #6ee7b7;
+      border: 1px solid rgba(16, 185, 129, 0.45);
+    }
+
+    .badge-closed {
+      background: rgba(244, 63, 94, 0.2);
+      color: #fda4af;
+      border: 1px solid rgba(244, 63, 94, 0.45);
+    }
+
+    .log-box {
+      margin-top: 8px;
+      padding: 8px 10px;
+      border-radius: 9px;
+      background: rgba(4, 9, 20, 0.9);
+      border: 1px solid rgba(98, 138, 255, 0.2);
+      font-size: 11px;
+      color: #a5f3fc;
+      max-height: 110px;
+      overflow-y: auto;
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 16, 0.78);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 50;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-card {
+      width: 100%;
+      max-width: 430px;
+      border-radius: 15px;
+      padding: 16px;
+      background: #0b1530;
+      border: 1px solid rgba(125, 211, 252, 0.45);
+      box-shadow: 0 0 36px rgba(59, 130, 246, 0.35);
+    }
+
+    .modal-title {
+      font-size: 14px;
       font-weight: 800;
-      color: #f472b6;
+      color: #ffffff;
       margin-bottom: 6px;
     }
 
-    .profit-title {
+    .modal-body {
+      font-size: 11.5px;
+      color: #c5d6f8;
+      margin-bottom: 12px;
+    }
+
+    .calc-box {
+      padding: 9px 11px;
+      border-radius: 10px;
+      background: rgba(6, 12, 28, 0.85);
+      border: 1px solid rgba(98, 138, 255, 0.25);
+      margin-bottom: 12px;
+      font-size: 11.5px;
+    }
+
+    .calc-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+
+    .calc-row:last-child {
+      margin-bottom: 0;
+      padding-top: 5px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       font-weight: 800;
-      color: #ffffff;
-      font-size: 1.05rem;
-      margin-bottom: 8px;
+      color: #fde68a;
     }
 
-    /* 4번: 유튜브 & 틱톡 */
-    .social-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-      margin-top: 18px;
-    }
-
-    .social-card {
-      background: var(--bg-card-soft);
-      border: 1px solid rgba(139, 92, 246, 0.32);
-      border-radius: 16px;
-      padding: 20px;
+    .modal-actions {
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 14px;
-    }
-
-    .social-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      justify-content: flex-end;
       gap: 8px;
-      padding: 12px 18px;
-      border-radius: 12px;
-      font-weight: 700;
-      background: linear-gradient(90deg, rgba(139, 92, 246, 0.32), rgba(34, 211, 238, 0.24));
-      border: 1px solid rgba(192, 132, 252, 0.55);
-      color: #ffffff;
     }
 
-    /* 푸터 */
-    footer {
-      border-top: 1px solid var(--border-glow);
-      padding: 30px 0 48px;
-      margin-top: 24px;
-      color: var(--text-muted);
-      font-size: 0.92rem;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 14px;
+    .footer-note {
+      text-align: center;
+      font-size: 11px;
+      color: #7d93bf;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
+  <div class="ambient-orb orb-1"></div>
+  <div class="ambient-orb orb-2"></div>
+  <div class="ambient-orb orb-3"></div>
 
-  <header>
-    <div class="container header-inner">
-      <div class="brand-block">
-        <div class="brand-title">HK WorldBank</div>
-        <div class="id-badge">ID:ljw2358</div>
+  <div class="app-shell">
+    <!-- Top Header -->
+    <header class="topbar">
+      <div class="brand-group">
+        <div class="brand-badge">
+          <span class="brand-dot"></span>
+          <span>HK WorldBank</span>
+        </div>
+        <div class="id-chip">
+          <span>ID</span>
+          <strong>LJW2458</strong>
+        </div>
       </div>
-      <div class="header-status">
-        <span class="status-pill">AIG 가동 중</span>
-        <span class="lang-pill">60개국어 지원</span>
+
+      <div class="top-right">
+        <div class="status-pill">
+          <span class="pulse-dot"></span>
+          <span>60개국 · AGI 가동 중</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Cover -->
+    <section class="hero-cover">
+      <div class="hero-tag">AI 오피스 센터 · 디지털 금융 코어</div>
+      <h1 class="hero-title">인류와 기술이 공존하는 차세대 디지털 금융 혁신</h1>
+      <p class="hero-sub">
+        60개국 실시간 AGI 코어와 10대 핵심 금융 모듈이 연동된 통합 AI 오피스 센터입니다.
+      </p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="switchTab('wallet')">지갑 연결</button>
+        <button class="btn" onclick="switchTab('transfer')">송금</button>
+        <button class="btn" onclick="switchTab('payment')">결제</button>
+        <button class="btn btn-warn" onclick="switchTab('deposit')">예치 · 중도 해지</button>
+      </div>
+    </section>
+
+    <!-- AGI Office Center -->
+    <section class="panel">
+      <div class="panel-head">
+        <div class="panel-title-wrap">
+          <span class="step-badge">1</span>
+          <h2 class="panel-title">AI 오피스 센터 · AGI '해나'</h2>
+        </div>
+        <span class="panel-sub">60개국 · AGI 가동 중</span>
+      </div>
+
+      <div class="agi-box">
+        <div id="agiReply" class="agi-reply">
+          [AGI 해나 · LJW2458] 60개국 실시간 운영 중입니다. 지갑 연결, 송금, 결제, 예치 및 중도 해지 작업을 바로 실행할 수 있습니다.
+        </div>
+        <div class="agi-controls">
+          <input
+            id="agiInput"
+            class="input-compact"
+            type="text"
+            placeholder="명령 입력 (예: 지갑 연결, 500 PI 송금, 예치 중도 해지 안내)"
+            onkeydown="if(event.key==='Enter') sendAgiPrompt()"
+          />
+          <button class="btn btn-primary" onclick="sendAgiPrompt()">실행</button>
+          <button class="btn btn-cyan" onclick="quickAgi('예치 중도 해지 시 정산 기준을 알려줘.')">중도 해지 조회</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 Core Modules & Interactive Workspace -->
+    <section class="panel">
+      <div class="panel-head">
+        <div class="panel-title-wrap">
+          <span class="step-badge">2</span>
+          <h2 class="panel-title">10대 핵심 모듈 & 실행 워크스페이스</h2>
+        </div>
+        <span class="panel-sub">지갑 · 송금 · 결제 · 예치 중도 해지 즉시 처리</span>
+      </div>
+
+      <div class="modules-grid" id="modulesGrid"></div>
+
+      <div class="workspace">
+        <div class="tab-row">
+          <button class="tab-btn active" id="tab-wallet" onclick="switchTab('wallet')">① 지갑 연결</button>
+          <button class="tab-btn" id="tab-transfer" onclick="switchTab('transfer')">② 송금</button>
+          <button class="tab-btn" id="tab-payment" onclick="switchTab('payment')">③ 결제</button>
+          <button class="tab-btn" id="tab-deposit" onclick="switchTab('deposit')">④ 예치 · 중도 해지</button>
+        </div>
+
+        <!-- Tab 1: Wallet -->
+        <div id="pane-wallet" class="tab-pane">
+          <div class="form-grid">
+            <div>
+              <label class="field-label">지갑 프로바이더</label>
+              <select id="walletProvider" class="field-select">
+                <option value="HK Vault (LJW2458)">HK Vault (LJW2458)</option>
+                <option value="Pi Browser Wallet">Pi Browser Wallet</option>
+                <option value="Hardware Key">Hardware Key</option>
+              </select>
+            </div>
+            <div>
+              <label class="field-label">지갑 주소</label>
+              <input id="walletAddress" class="field-input" type="text" value="GBHK2458...LJW2458" />
+            </div>
+            <div>
+              <label class="field-label">연결 상태</label>
+              <input id="walletStatusText" class="field-input" type="text" value="미연결" readonly />
+            </div>
+          </div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="btn btn-primary" onclick="connectWallet()">지갑 연결하기</button>
+            <button class="btn" onclick="disconnectWallet()">연결 해제</button>
+          </div>
+        </div>
+
+        <!-- Tab 2: Transfer -->
+        <div id="pane-transfer" class="tab-pane" style="display:none;">
+          <div class="form-grid">
+            <div>
+              <label class="field-label">수신자 ID / 주소</label>
+              <input id="transferTo" class="field-input" type="text" placeholder="예: GBHK9981... 또는 @member" />
+            </div>
+            <div>
+              <label class="field-label">송금 수량 (PI)</label>
+              <input id="transferAmount" class="field-input" type="number" min="1" value="120" />
+            </div>
+            <div>
+              <label class="field-label">메모</label>
+              <input id="transferMemo" class="field-input" type="text" placeholder="AI 오피스 정산" />
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="executeTransfer()">즉시 송금 실행</button>
+        </div>
+
+        <!-- Tab 3: Payment -->
+        <div id="pane-payment" class="tab-pane" style="display:none;">
+          <div class="form-grid">
+            <div>
+              <label class="field-label">가맹점 / 서비스 코드</label>
+              <input id="paymentMerchant" class="field-input" type="text" value="HK-AI-OFFICE-01" />
+            </div>
+            <div>
+              <label class="field-label">결제 금액 (PI)</label>
+              <input id="paymentAmount" class="field-input" type="number" min="1" value="45" />
+            </div>
+            <div>
+              <label class="field-label">결제 수단</label>
+              <select id="paymentMethod" class="field-select">
+                <option value="HK 즉시결제">HK 즉시결제</option>
+                <option value="60개국 크로스보더 결제">60개국 크로스보더 결제</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="executePayment()">결제 승인</button>
+        </div>
+
+        <!-- Tab 4: Deposit & Early Termination -->
+        <div id="pane-deposit" class="tab-pane" style="display:none;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
+            <span class="panel-sub">예치 내역을 선택하고 <strong>중도 해지</strong> 작업을 진행할 수 있습니다.</span>
+            <button class="btn btn-cyan" onclick="addSampleDeposit()">+ 신규 예치 추가 (500 PI)</button>
+          </div>
+          <div id="depositList"></div>
+        </div>
+
+        <div id="actionLog" class="log-box">
+          [시스템 준비 완료] LJW2458 · 60개국 AGI 가동 중
+        </div>
+      </div>
+    </section>
+
+    <div class="footer-note">HK WorldBank · AI 오피스 센터 · ID LJW2458 · 60개국 AGI 가동 중</div>
+  </div>
+
+  <!-- Early Termination Modal -->
+  <div id="terminateModal" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-title">예치 중도 해지 처리</div>
+      <div class="modal-body" id="terminateDesc">선택한 예치 계좌의 중도 해지 정산 내역을 확인하세요.</div>
+      <div class="calc-box" id="terminateCalc"></div>
+      <div class="modal-actions">
+        <button class="btn" onclick="closeTerminateModal()">취소</button>
+        <button class="btn btn-danger" onclick="confirmEarlyTermination()">중도 해지 확정</button>
       </div>
     </div>
-  </header>
+  </div>
 
-  <main class="container">
-    <!-- 표지 -->
-    <section class="hero">
-      <div class="hero-box">
-        <h1>인류와 기술이 공존하는<br />차세대 디지털 금융 플랫폼</h1>
-        <p>
-          개척자 중심의 투명한 디지털 금융 생태계와 10대 핵심 모듈, 그리고 순수익 사회환원 구조를 바탕으로
-          안정적이고 지속 가능한 자산 운영 및 소통 환경을 제공합니다.
-        </p>
-        <div class="hero-tags">
-          <span class="tag">ID:ljw2358</span>
-          <span class="tag">AIG 가동 중</span>
-          <span class="tag">60개국어 지원</span>
-          <span class="tag">10대 핵심 모듈</span>
-          <span class="tag">순수익 사회환원</span>
-        </div>
-      </div>
-    </section>
+  <script>
+    const MODULES = [
+      { id: 'wallet', name: '1. 지갑연결', desc: '지갑 연동 및 키 인증', tab: 'wallet' },
+      { id: 'transfer', name: '2. 송금', desc: '실시간 P2P·글로벌 송금', tab: 'transfer' },
+      { id: 'payment', name: '3. 결제', desc: '가맹점·서비스 즉시결제', tab: 'payment' },
+      { id: 'deposit', name: '4. 예치', desc: '예치 운용 및 중도 해지', tab: 'deposit' },
+      { id: 'reward', name: '5. 보상', desc: '생태계 활동 리워드', tab: 'wallet' },
+      { id: 'ubi', name: '6. 기본소득', desc: '커뮤니티 UBI 분배', tab: 'wallet' },
+      { id: 'swap', name: '7. 토큰스왑', desc: '토큰 간 즉시 교환', tab: 'transfer' },
+      { id: 'dex', name: '8. DEX 스왑', desc: '탈중앙 유동성 스왑', tab: 'transfer' },
+      { id: 'lp', name: '9. LP 스테이킹', desc: '유동성 풀 예치 수익', tab: 'deposit' },
+      { id: 'piqty', name: '10. PI 수량', desc: '보유·운용 수량 현황', tab: 'wallet' }
+    ];
 
-    <!-- 1번 -->
-    <section id="sec-1">
-      <div class="section-card">
-        <div class="section-num">01</div>
-        <h2>AIG 가동 중 · 60개국어 글로벌 지원</h2>
-        <p>
-          현재 AIG 시스템이 가동 중이며, 전 세계 60개국어 지원 환경을 통해 다국어 안내,
-          서비스 흐름 설명 및 글로벌 사용자 응대를 체계적으로 운영합니다.
-        </p>
-        <div class="agi-grid">
-          <div class="mini-box">
-            <strong>AIG 가동 중</strong>
-            <p>핵심 안내 및 서비스 흐름을 실시간으로 지원하는 지능형 시스템 가동 중</p>
-            <ul class="detail-list">
-              <li>10대 핵심 모듈 이용 방법 및 절차 안내</li>
-              <li>예치·스왑·스테이킹·수량 확인 흐름 지원</li>
-              <li>사용자 문의 및 기본 안내 신속 대응</li>
-            </ul>
-          </div>
-          <div class="mini-box">
-            <strong>60개국어 지원</strong>
-            <p>다양한 언어권의 이용자가 불편 없이 플랫폼을 이해하고 이용할 수 있도록 지원</p>
-            <ul class="detail-list">
-              <li>60개국어 다국어 인터페이스 및 안내 체계</li>
-              <li>글로벌 이용자 접근성 및 가독성 강화</li>
-              <li>국경 없는 디지털 금융 소통 기반 마련</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+    let activeModuleId = 'deposit';
+    let walletConnected = false;
+    let selectedDepositId = null;
 
-    <!-- 2번 -->
-    <section id="sec-2">
-      <div class="section-card">
-        <div class="section-num">02</div>
-        <h2>10대 핵심 모듈</h2>
-        <p>
-          지갑연결, 송금, 결제, 예치, 보상, 기본소득, 스왑, DEX 스왑, LP 스테이킹, PI 수량까지
-          10대 핵심 모듈 각각의 역할과 세부 절차를 상세히 구성했습니다.
-        </p>
+    let deposits = [
+      { id: 'DEP-2458-01', title: '12개월 고정 예치', principal: 1000, rate: 15.5, earlyRate: 8.5, elapsedDays: 95, status: 'ACTIVE' },
+      { id: 'DEP-2458-02', title: '24개월 장기 예치', principal: 2500, rate: 19.0, earlyRate: 8.5, elapsedDays: 140, status: 'ACTIVE' }
+    ];
 
-        <div class="modules-grid">
-          <div class="module-item">
-            <div class="module-head">
-              <span class="module-name">1. 지갑연결</span>
-              <span class="module-badge">연동 프로세스</span>
-            </div>
-            <div class="module-desc">사용자 지갑 연결 상태 확인과 안전한 세션 연동 절차를 제공합니다.</div>
-            <div class="flow-box">
-              <strong>상세 흐름</strong>
-              지갑 선택 → 연결 요청 및 상태 확인 → 연동 완료 후 자산 현황 표시
-            </div>
-          </div>
+    function appendLog(msg) {
+      const box = document.getElementById('actionLog');
+      const now = new Date().toLocaleTimeString('ko-KR', { hour12: false });
+      box.innerHTML = `<div>[${now}] ${msg}</div>` + box.innerHTML;
+    }
 
-          <div class="module-item">
-            <div class="module-head">
-              <span class="module-name">2. 송금</span>
-              <span class="module-badge">수정 반영</span>
-            </div>
-            <div class="module-desc">수신 주소 검증, 전송 수량 입력 및 송금 내역 확인 흐름을 반영했습니다.</div>
-            <div class="flow-box">
-              <strong>상세 흐름</strong>
-              받는 주소 및 수량 입력 → 수수료·내역 검증 → 전송 처리 및 완료 내역 조회
-            </div>
-          </div>
+    function renderModules() {
+      const grid = document.getElementById('modulesGrid');
+      grid.innerHTML = MODULES.map(m => `
+        <button class="mod-card ${m.id === activeModuleId ? 'active' : ''}" onclick="selectModule('${m.id}', '${m.tab}')">
+          <div class="mod-name">${m.name}</div>
+          <div class="mod-desc">${m.desc}</div>
+        </button>
+      `).join('');
+    }
 
-          <div class="module-item">
-            <div class="module-head">
-              <span class="module-name">3. 결제</span>
-              <span class="module-badge">수정 반영</span>
-            </div>
-            <div class="module-desc">결제 요청 확인, 금액 검증 및 결제 완료 내역 관리 절차를 구성했습니다.</div>
-            <div class="flow-box">
-              <strong>상세 흐름</strong>
-              결제 정보·금액 확인 → 승인 처리 → 결제 영수증 및 상태 내역 기록
-            </div>
-          </div>
+    function selectModule(id, tab) {
+      activeModuleId = id;
+      renderModules();
+      switchTab(tab);
+      const found = MODULES.find(m => m.id === id);
+      if (found) appendLog(`모듈 선택: ${found.name} (${found.desc})`);
+    }
 
-          <div class="module-item">
-            <div class="module-head">
-              <span class="module-name">4. 예치</span>
-              <span class="module-badge">수정 반영</span>
-            </div>
-            <div class="module-desc">기간별 예치 신청, 이율 안내 및 만기·중도 해지 기준을 반영했습니다.</div>
-            <div class="flow-box">
-              <strong>상세 흐름</strong>
-              예치 기간·수량 선택 → 적용 이율 및 만기·중도 해지 조건 확인 → 예치 등록 및 현황 관리
-            </div>
-          </div>
+    function switchTab(tabName) {
+      ['wallet', 'transfer', 'payment', 'deposit'].forEach(t => {
+        document.getElementById(`tab-${t}`).classList.toggle('active', t === tabName);
+        document.getElementById(`pane-${t}`).style.display = (t === tabName) ? 'block' : 'none';
+      });
+      if (tabName === 'deposit') renderDeposits();
+    }
 
-          <div class="module-item">
-            <div class="module-head">
-              <span class="module-name">5. 보상</span>
-              <span class="module-badge">리워드</span>
-            </div>
-            <div class="module-desc">생태계 참여 및 활동 기여에 따른 보상 적립과 수령 절차를 안내합니다.</div>
-            <div class="flow-box">
-              <strong>상세 흐름</strong>
-              보상 지급 조건 확인 → 적립 수량 조회 → 보상 수령 및 반영 내역 확인
-            </div>
-          </div>
+    function sendAgiPrompt() {
+      const input = document.getElementById('agiInput');
+      const text = input.value.trim();
+      if (!text) return;
+      quickAgi(text);
+      input.value = '';
+    }
 
-          <div class="module-item">
-            <div class="module-head">
-              <span class="module-name">6. 기본소득</span>
-              <span class="module-badge">UBI 연동</span>
-            </div>
-            <div class="module-desc">순수익 사회환원 재원과 연계된 기본소득 배분 기준과 내역을 안내합니다.</div>
-            <div class="flow-box">
-              <strong>상세 흐름</strong>
-              기본소득 배분 기준 확인 → 지급 주기·대상 확인 → 기본소득 지급 내역 조회
-            </div>
-          </div>
+    function quickAgi(promptText) {
+      const reply = document.getElementById('agiReply');
+      let answer = `60개국 AGI 코어가 "${promptText}" 요청을 처리했습니다. (계정 ID: LJW2458)`;
+      if (promptText.includes('지갑')) {
+        switchTab('wallet');
+        answer = '지갑 연결 탭으로 이동했습니다. HK Vault 또는 Pi Browser 지갑을 연결하세요.';
+      } else if (promptText.includes('송금')) {
+        switchTab('transfer');
+        answer = '송금 탭으로 이동했습니다. 수신자 ID와 PI 수량을 입력해 즉시 송금할 수 있습니다.';
+      } else if (promptText.includes('결제')) {
+        switchTab('payment');
+        answer = '결제 탭으로 이동했습니다. 가맹점 코드와 결제 금액을 확인 후 승인하세요.';
+      } else if (promptText.includes('해지') || promptText.includes('예치')) {
+        switchTab('deposit');
+        answer = '예치 · 중도 해지 탭으로 이동했습니다. 경과 일수 기준 중도 해지 이자 정산 후 원금과 함께 반환됩니다.';
+      }
+      reply.textContent = `[AGI 해나 · 60개국 가동 중] ${answer}`;
+      appendLog(`AGI 해나 응답: ${answer}`);
+    }
 
-          <div class="module-item">
-            <div class="module-head">
-              <span class="module-name">7. 스왑</span>
-              <span class="module-badge">수정 반영</span>
+    function connectWallet() {
+      const provider = document.getElementById('walletProvider').value;
+      const addr = document.getElementById('walletAddress').value.trim() || 'GBHK2458...LJW2458';
+      walletConnected = true;
+      document.getElementById('walletStatusText').value = `연결됨 (${provider})`;
+      appendLog(`지갑 연결 완료: ${provider} · ${addr} (ID: LJW2458)`);
+    }
+
+    function disconnectWallet() {
+      walletConnected = false;
+      document.getElementById('walletStatusText').value = '미연결';
+      appendLog('지갑 연결이 해제되었습니다.');
+    }
+
+    function executeTransfer() {
+      const to = document.getElementById('transferTo').value.trim();
+      const amt = Number(document.getElementById('transferAmount').value);
+      const memo = document.getElementById('transferMemo').value.trim() || '일반 송금';
+      if (!to || !amt || amt <= 0) {
+        appendLog('송금 오류: 수신자와 올바른 수량을 입력하세요.');
+        return;
+      }
+      appendLog(`송금 완료: ${to}로 ${amt.toLocaleString()} PI 전송 (메모: ${memo})`);
+      document.getElementById('transferTo').value = '';
+    }
+
+    function executePayment() {
+      const merchant = document.getElementById('paymentMerchant').value.trim() || 'HK-AI-OFFICE-01';
+      const amt = Number(document.getElementById('paymentAmount').value);
+      const method = document.getElementById('paymentMethod').value;
+      if (!amt || amt <= 0) {
+        appendLog('결제 오류: 결제 금액을 입력하세요.');
+        return;
+      }
+      appendLog(`결제 승인 완료: [${merchant}] ${amt.toLocaleString()} PI (${method})`);
+    }
+
+    function addSampleDeposit() {
+      const idx = deposits.length + 1;
+      deposits.unshift({
+        id: `DEP-2458-0${idx}`,
+        title: '6개월 정기 예치',
+        principal: 500,
+        rate: 8.5,
+        earlyRate: 8.5,
+        elapsedDays: 30,
+        status: 'ACTIVE'
+      });
+      renderDeposits();
+      appendLog(`신규 예치 추가: DEP-2458-0${idx} · 500 PI`);
+    }
+
+    function renderDeposits() {
+      const list = document.getElementById('depositList');
+      list.innerHTML = deposits.map(d => {
+        const estInterest = ((d.principal * (d.earlyRate / 100)) * (d.elapsedDays / 365)).toFixed(2);
+        return `
+          <div class="deposit-item">
+            <div class="deposit-meta">
+              <strong>
+                ${d.id} · ${d.title}
+                <span class="badge-status ${d.status === 'ACTIVE' ? 'badge-active' : 'badge-closed'}">
+                  ${d.status === 'ACTIVE' ? '운용 중' : '중도 해지 완료'}
+                </span>
+              </strong>
+              <span>원금 ${d.principal.toLocaleString()} PI · 약정 연 ${d.rate}% · 중도 해지 적용 ${d.earlyRate}% · 경과 ${d.elapsedDays}일 · 예상 이자 +${estInterest} PI</span>
             </div>
-            <div class="module-desc">지원 자산 간 교환 비율 확인과 스왑 실행 흐름을 수정 반영했습니다.</div>
-            <div class="flow-box">
-              <strong>상세 흐름</strong>
-              전환 대상 자산·수량 입력 → 예상 수령량 및 비율 확인 → 스왑 실행 및 잔액 반영
-            </div>
-          </div>
-
-          <div class="module-item">
-            <div class="module-head">
-              <span class="module-name">8. DEX 스왑</span>
-              <span class="module-badge">수정 반영</span>
-            </div>
-            <div class="module-desc">탈중앙화 스왑 경로 조회, 허용 범위 설정 및 체결 확인 흐름을 담았습니다.</div>
-            <div class="flow-box">
-              <strong>상세 흐름</strong>
-              스왑 페어·경로 확인 → 허용 오차(슬리피지) 설정 → 트랜잭션 승인 및 체결 결과 확인
-            </div>
-          </div>
-
-          <div class="module-item">
-            <div class="module-head">
-              <span class="module-name">9. LP 스테이킹</span>
-              <span class="module-badge">유동성</span>
-            </div>
-            <div class="module-desc">유동성 풀 참여, 스테이킹 예치 및 수익 분배 현황을 확인합니다.</div>
-            <div class="flow-box">
-              <strong>상세 흐름</strong>
-              유동성 풀·스테이킹 수량 선택 → 예치 실행 → 누적 수익 및 현황 관리
-            </div>
-          </div>
-
-          <div class="module-item">
-            <div class="module-head">
-              <span class="module-name">10. PI 수량</span>
-              <span class="module-badge">수정 반영</span>
-            </div>
-            <div class="module-desc">보유 및 연동 PI 수량 집계와 변동 내역을 명확히 표시하도록 수정했습니다.</div>
-            <div class="flow-box">
-              <strong>상세 흐름</strong>
-              연동 지갑 기준 PI 수량 집계 → 사용·예치·스왑 등 변동 내역 확인 → 총 보유 현황 갱신
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3번 (기존 5번 이동) -->
-    <section id="sec-3">
-      <div class="section-card">
-        <div class="section-num">03</div>
-        <h2>순수익 사회환원</h2>
-        <p>
-          플랫폼 운영을 통해 발생하는 순수익은 기본소득(UBI), 회사 경영비, 그리고 HK 사회재단으로
-          투명하게 배분됩니다.
-        </p>
-
-        <div class="profit-grid">
-          <div class="profit-card">
-            <div class="profit-ratio">30%</div>
-            <div class="profit-title">기본소득 (UBI)</div>
-            <p>순수익의 30%를 기본소득 재원으로 배분하여 생태계 환원 및 공동체 지원에 활용합니다.</p>
-          </div>
-
-          <div class="profit-card">
-            <div class="profit-ratio">30%</div>
-            <div class="profit-title">회사 경영비</div>
-            <p>순수익의 30%를 인프라 운영, 보안 관리, 서비스 고도화 등 경영비로 활용합니다.</p>
-          </div>
-
-          <div class="profit-card">
-            <div class="profit-ratio">최대 30%</div>
-            <div class="profit-title">HK 사회재단</div>
-            <p>최대 30%를 HK 사회재단에 적립하여 공익 목적 및 기업 인수 등 중요 자본 수요 시 활용합니다.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4번 (유튜브 & 틱톡) -->
-    <section id="sec-4">
-      <div class="section-card">
-        <div class="section-num">04</div>
-        <h2>유튜브 &amp; 틱톡 채널</h2>
-        <p>
-          플랫폼 안내, 주요 기능 설명 및 최신 영상 콘텐츠는 유튜브와 틱톡 채널에서 확인하실 수 있습니다.
-        </p>
-
-        <div class="social-grid">
-          <div class="social-card">
             <div>
-              <h3 style="color:#ffffff; margin-bottom:6px;">유튜브 채널</h3>
-              <p>상세 설명 영상, 기능 가이드 및 업데이트 소식을 시청할 수 있습니다.</p>
+              ${d.status === 'ACTIVE'
+                ? `<button class="btn btn-danger" onclick="openTerminateModal('${d.id}')">중도 해지</button>`
+                : `<span class="panel-sub">정산 완료</span>`
+              }
             </div>
-            <a class="social-btn" href="https://www.youtube.com/@Hyekong2026" target="_blank" rel="noopener noreferrer">
-              ▶ 유튜브 바로가기 (@Hyekong2026)
-            </a>
           </div>
+        `;
+      }).join('');
+    }
 
-          <div class="social-card">
-            <div>
-              <h3 style="color:#ffffff; margin-bottom:6px;">틱톡 채널</h3>
-              <p>핵심 포인트 중심의 짧은 영상과 주요 소식을 빠르게 만나보실 수 있습니다.</p>
-            </div>
-            <a class="social-btn" href="https://www.tiktok.com/@Hyekong2026" target="_blank" rel="noopener noreferrer">
-              ♪ 틱톡 바로가기 (@Hyekong2026)
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+    function openTerminateModal(id) {
+      const item = deposits.find(d => d.id === id);
+      if (!item) return;
+      selectedDepositId = id;
+      const interest = Number(((item.principal * (item.earlyRate / 100)) * (item.elapsedDays / 365)).toFixed(2));
+      const total = Number((item.principal + interest).toFixed(2));
 
-  <footer>
-    <div class="container footer-inner">
-      <div>HK WorldBank · ID:ljw2358</div>
-      <div>문의 이메일: <a href="mailto:support@hkwb.world">support@hkwb.world</a></div>
-    </div>
-  </footer>
+      document.getElementById('terminateDesc').textContent =
+        `${item.id} (${item.title}) 계좌를 중도 해지합니다. 중도 해지 이율 연 ${item.earlyRate}%가 적용됩니다.`;
+      document.getElementById('terminateCalc').innerHTML = `
+        <div class="calc-row"><span>예치 원금</span><strong>${item.principal.toLocaleString()} PI</strong></div>
+        <div class="calc-row"><span>경과 일수</span><span>${item.elapsedDays}일</span></div>
+        <div class="calc-row"><span>중도 해지 이자 (${item.earlyRate}%)</span><span>+${interest.toLocaleString()} PI</span></div>
+        <div class="calc-row"><span>실수령 정산액</span><span>${total.toLocaleString()} PI</span></div>
+      `;
+      document.getElementById('terminateModal').classList.add('open');
+    }
 
+    function closeTerminateModal() {
+      selectedDepositId = null;
+      document.getElementById('terminateModal').classList.remove('open');
+    }
+
+    function confirmEarlyTermination() {
+      if (!selectedDepositId) return;
+      const item = deposits.find(d => d.id === selectedDepositId);
+      if (!item) return;
+
+      const interest = Number(((item.principal * (item.earlyRate / 100)) * (item.elapsedDays / 365)).toFixed(2));
+      const total = Number((item.principal + interest).toFixed(2));
+      item.status = 'CLOSED';
+
+      closeTerminateModal();
+      renderDeposits();
+      appendLog(`중도 해지 완료: ${item.id} · 원금 ${item.principal.toLocaleString()} PI + 이자 ${interest.toLocaleString()} PI = 총 ${total.toLocaleString()} PI 지급`);
+    }
+
+    renderModules();
+    renderDeposits();
+  </script>
 </body>
 </html>
