@@ -151,6 +151,24 @@
       text-shadow: 0 0 8px rgba(168, 85, 247, 0.45);
     }
 
+    .grid-2x5 {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    @media (max-width: 1024px) {
+      .grid-2x5 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .grid-2x5 {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .module-card {
       background: var(--bg-card);
       border: 1px solid var(--border-neon);
@@ -194,16 +212,15 @@
       margin-top: 6px;
     }
 
-    .grid-top {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-
-    @media (max-width: 900px) {
-      .grid-top {
-        grid-template-columns: 1fr;
-      }
+    .early-exit-alert {
+      margin-top: 10px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: rgba(236, 72, 153, 0.16);
+      border: 1px solid rgba(244, 114, 182, 0.75);
+      color: #fbcfe8;
+      font-size: 0.8rem;
+      font-weight: 700;
     }
 
     .media-4-box {
@@ -359,14 +376,13 @@
       <p id="heroDesc">현재 KYC · KYB 미인증 상태입니다. 둘러보기 모드만 가능하며, 실제 실행 시 KYC · KYB 인증이 필요합니다.</p>
     </section>
 
-    <h2 class="section-title">핵심 모듈</h2>
-
-    <section class="grid-top">
+    <h2 class="section-title">10대 핵심 모듈</h2>
+    <section class="grid-2x5">
       <article class="module-card">
         <div>
           <div class="module-num">01</div>
           <div class="module-title">지갑연결</div>
-          <p class="module-desc">개인 지갑 연동 및 잔액 확인</p>
+          <p class="module-desc">지갑 주소 연동 및 확인</p>
         </div>
         <button class="btn" onclick="openModule('wallet')">열기</button>
       </article>
@@ -380,18 +396,83 @@
         <button class="btn" onclick="openModule('transfer')">열기</button>
       </article>
 
-      <article class="module-card featured">
+      <article class="module-card">
         <div>
           <div class="module-num">03</div>
+          <div class="module-title">결제</div>
+          <p class="module-desc">가맹점 자산 결제</p>
+        </div>
+        <button class="btn" onclick="openModule('payment')">열기</button>
+      </article>
+
+      <article class="module-card featured">
+        <div>
+          <div class="module-num">04</div>
+          <div class="module-title">예치</div>
+          <p class="module-desc">6개월·1년·2년·3년 예치 운용</p>
+          <div class="early-exit-alert">중도 해지 시 이자율 8.5% 적용</div>
+        </div>
+        <button class="btn btn-primary" onclick="openModule('deposit')">열기</button>
+      </article>
+
+      <article class="module-card featured">
+        <div>
+          <div class="module-num">05</div>
           <div class="module-title">보상</div>
-          <p class="module-desc">기여도 기반 리워드 수령</p>
+          <p class="module-desc">기여도 리워드 수령</p>
         </div>
         <button class="btn btn-primary" onclick="openModule('reward')">열기</button>
       </article>
+
+      <article class="module-card">
+        <div>
+          <div class="module-num">06</div>
+          <div class="module-title">기본소득</div>
+          <p class="module-desc">기본소득 배분 확인</p>
+        </div>
+        <button class="btn" onclick="openModule('ubi')">열기</button>
+      </article>
+
+      <article class="module-card">
+        <div>
+          <div class="module-num">07</div>
+          <div class="module-title">토큰스왑</div>
+          <p class="module-desc">파이·테더·리플·XRP·BTC 교환</p>
+        </div>
+        <button class="btn" onclick="openModule('swap')">열기</button>
+      </article>
+
+      <article class="module-card">
+        <div>
+          <div class="module-num">08</div>
+          <div class="module-title">DEX 스왑</div>
+          <p class="module-desc">탈중앙화 풀 스왑</p>
+        </div>
+        <button class="btn" onclick="openModule('dex')">열기</button>
+      </article>
+
+      <article class="module-card">
+        <div>
+          <div class="module-num">09</div>
+          <div class="module-title">LP 스테이킹</div>
+          <p class="module-desc">유동성 스테이킹 운용</p>
+        </div>
+        <button class="btn" onclick="openModule('staking')">열기</button>
+      </article>
+
+      <article class="module-card">
+        <div>
+          <div class="module-num">10</div>
+          <div class="module-title">PI 수량</div>
+          <p class="module-desc">개인 보유 수량 동기화</p>
+        </div>
+        <button class="btn" onclick="openModule('piBalance')">열기</button>
+      </article>
     </section>
 
-    <section class="media-4-box" aria-label="04 유튜브 및 틱톡">
-      <div class="module-num">04</div>
+    <!-- 04번 아래 유튜브 / 틱톡 동일 너비 2칸 -->
+    <section class="media-4-box" aria-label="유튜브 및 틱톡">
+      <div class="module-num">채널 바로가기</div>
       <div class="module-title">유튜브 · 틱톡</div>
       <div class="media-4-grid">
         <div class="media-slot">
@@ -411,6 +492,7 @@
       </div>
     </section>
 
+    <!-- 선택 모듈 작업 공간 -->
     <section id="workspace" class="workspace-panel">
       <h3 id="wTitle">01. 지갑연결</h3>
       <p id="wDesc" class="module-desc">지갑 주소를 확인하고 연결합니다.</p>
@@ -419,6 +501,7 @@
       <div id="wResult" class="result-box">대기 중</div>
     </section>
 
+    <!-- 사회환원 -->
     <h2 class="section-title">사회환원</h2>
     <section class="social-grid">
       <article class="module-card">
@@ -437,6 +520,7 @@
       </article>
     </section>
 
+    <!-- 고객센터 AI '삐니' -->
     <h2 class="section-title">고객센터</h2>
     <section class="cs-box">
       <div class="cs-header">고객센터 AI '삐니'</div>
@@ -457,7 +541,9 @@
     const appState = {
       authenticated: false,
       isMainnet: false,
-      currentModule: 'wallet'
+      currentModule: 'wallet',
+      userPi: 1250.5,
+      assets: ['파이코인', '테더', '리플', 'XRP', '비트코인']
     };
 
     function toggleAuth() {
@@ -493,23 +579,89 @@
       const d = document.getElementById('wDesc');
       const f = document.getElementById('wForm');
       const r = document.getElementById('wResult');
+      const assetOpts = appState.assets.map(a => `<option value="${a}">${a}</option>`).join('');
       r.textContent = '준비 완료';
 
-      if (m === 'wallet') {
-        t.textContent = '01. 지갑연결';
-        d.textContent = '지갑 주소를 확인하고 연결합니다.';
-        f.innerHTML = `<div><label>지갑 주소</label><input id="in_wallet" type="text" value="pi://wallet_ljw2358" /></div>`;
-      } else if (m === 'transfer') {
-        t.textContent = '02. 송금';
-        d.textContent = '수신 주소와 송금 수량을 입력하세요.';
-        f.innerHTML = `
-          <div><label>받는 주소</label><input id="in_to" type="text" placeholder="수신 주소 입력" /></div>
-          <div><label>수량</label><input id="in_amt" type="number" value="10" /></div>
-        `;
-      } else if (m === 'reward') {
-        t.textContent = '03. 보상';
-        d.textContent = '누적된 기여도 보상을 확인하고 수령합니다.';
-        f.innerHTML = `<div><label>수령 가능 보상</label><input id="in_rew" type="text" value="50.00" readonly /></div>`;
+      switch (m) {
+        case 'wallet':
+          t.textContent = '01. 지갑연결';
+          d.textContent = '지갑 주소를 확인하고 연결합니다.';
+          f.innerHTML = `<div><label>지갑 주소</label><input id="in_wallet" type="text" value="pi://wallet_ljw2358" /></div>`;
+          break;
+        case 'transfer':
+          t.textContent = '02. 송금';
+          d.textContent = '수신 주소와 송금 수량을 입력하세요.';
+          f.innerHTML = `
+            <div><label>받는 주소</label><input id="in_to" type="text" placeholder="수신 주소 입력" /></div>
+            <div><label>수량</label><input id="in_amt" type="number" value="10" /></div>
+          `;
+          break;
+        case 'payment':
+          t.textContent = '03. 결제';
+          d.textContent = '가맹점 결제 금액을 입력하세요.';
+          f.innerHTML = `
+            <div><label>가맹점</label><input id="in_merchant" type="text" value="HK 가맹점 #01" /></div>
+            <div><label>결제 금액</label><input id="in_payamt" type="number" value="25" /></div>
+          `;
+          break;
+        case 'deposit':
+          t.textContent = '04. 예치';
+          d.textContent = '예치 기간(6개월, 1년, 2년, 3년)을 선택하세요. 중도 해지 시 이자율 8.5%가 적용됩니다.';
+          f.innerHTML = `
+            <div><label>예치 수량</label><input id="in_depamt" type="number" value="500" /></div>
+            <div><label>예치 기간</label>
+              <select id="in_depterm">
+                <option value="6개월 (연 8.5%)">6개월 (연 8.5%)</option>
+                <option value="1년 (연 15.5%)">1년 (연 15.5%)</option>
+                <option value="2년 (연 19.0%)">2년 (연 19.0%)</option>
+                <option value="3년 (연 24.0%)">3년 (연 24.0%)</option>
+              </select>
+            </div>
+            <div><label>해지 조건</label>
+              <select id="in_exit">
+                <option value="만기 유지">만기 유지</option>
+                <option value="중도 해지 (이자율 8.5%)">중도 해지 (이자율 8.5%)</option>
+              </select>
+            </div>
+          `;
+          break;
+        case 'reward':
+          t.textContent = '05. 보상';
+          d.textContent = '기여도 리워드 수량을 확인하고 수령합니다.';
+          f.innerHTML = `<div><label>수령 가능 보상</label><input id="in_rew" type="text" value="50.00" readonly /></div>`;
+          break;
+        case 'ubi':
+          t.textContent = '06. 기본소득';
+          d.textContent = '기본소득 배분 내역을 확인하고 수령합니다.';
+          f.innerHTML = `<div><label>배분 예정 기본소득</label><input id="in_ubi" type="text" value="30.00" readonly /></div>`;
+          break;
+        case 'swap':
+          t.textContent = '07. 토큰스왑';
+          d.textContent = '파이코인, 테더, 리플, XRP, 비트코인 중 선택하여 교환합니다.';
+          f.innerHTML = `
+            <div><label>보낼 자산</label><select id="in_from">${assetOpts}</select></div>
+            <div><label>보낼 수량</label><input id="in_swapamt" type="number" value="50" /></div>
+            <div><label>받을 자산</label><select id="in_to">${assetOpts}</select></div>
+          `;
+          break;
+        case 'dex':
+          t.textContent = '08. DEX 스왑';
+          d.textContent = '유동성 풀에서 토큰을 스왑합니다.';
+          f.innerHTML = `
+            <div><label>풀 페어</label><select id="in_pair"><option>파이코인 / 테더</option><option>리플 / 테더</option><option>XRP / 테더</option><option>비트코인 / 테더</option></select></div>
+            <div><label>스왑 수량</label><input id="in_dexamt" type="number" value="30" /></div>
+          `;
+          break;
+        case 'staking':
+          t.textContent = '09. LP 스테이킹';
+          d.textContent = '유동성 스테이킹 수량을 입력하세요.';
+          f.innerHTML = `<div><label>스테이킹 수량</label><input id="in_stkamt" type="number" value="200" /></div>`;
+          break;
+        case 'piBalance':
+          t.textContent = '10. PI 수량';
+          d.textContent = '개인 보유 수량 기준으로 동기화합니다.';
+          f.innerHTML = `<div><label>내 파이 수량</label><input id="in_piqty" type="number" step="0.01" value="${appState.userPi}" /></div>`;
+          break;
       }
 
       document.getElementById('workspace').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -522,8 +674,26 @@
         r.textContent = `[${netLabel}] KYC · KYB 미인증 상태입니다. 둘러보기 모드만 가능하며, 상단에서 KYC · KYB 인증을 완료해야 실행됩니다.`;
         return;
       }
-      const title = document.getElementById('wTitle').textContent;
-      r.textContent = `[${netLabel}] ${title} 처리가 완료되었습니다.`;
+
+      const m = appState.currentModule;
+      if (m === 'deposit') {
+        const amt = document.getElementById('in_depamt')?.value || 0;
+        const term = document.getElementById('in_depterm')?.value || '';
+        const exitCond = document.getElementById('in_exit')?.value || '';
+        r.textContent = `[${netLabel}] 예치 ${amt} 처리 완료 (${term} / ${exitCond})`;
+      } else if (m === 'swap') {
+        const fromA = document.getElementById('in_from')?.value;
+        const toA = document.getElementById('in_to')?.value;
+        const amt = document.getElementById('in_swapamt')?.value || 0;
+        r.textContent = `[${netLabel}] 토큰스왑 실행: ${amt} ${fromA} -> ${toA}`;
+      } else if (m === 'piBalance') {
+        const val = parseFloat(document.getElementById('in_piqty')?.value || appState.userPi);
+        appState.userPi = isNaN(val) ? appState.userPi : val;
+        r.textContent = `[${netLabel}] 개인 PI 수량 동기화 완료: ${appState.userPi} PI`;
+      } else {
+        const title = document.getElementById('wTitle').textContent;
+        r.textContent = `[${netLabel}] ${title} 처리가 완료되었습니다.`;
+      }
     }
 
     function sendCs() {
