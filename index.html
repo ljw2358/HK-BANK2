@@ -44,7 +44,7 @@
       top: 0;
       z-index: 100;
       backdrop-filter: blur(14px);
-      background: rgba(7, 11, 20, 0.86);
+      background: rgba(7, 11, 20, 0.88);
       border-bottom: 1px solid var(--border);
     }
 
@@ -62,34 +62,34 @@
     .brand-block {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 2px;
+    }
+
+    .brand-logo-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     .brand-logo {
-      font-size: 1.45rem;
+      font-size: 1.5rem;
       font-weight: 900;
       letter-spacing: -0.02em;
       background: linear-gradient(90deg, var(--cyan), var(--blue), var(--purple));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 24px rgba(34, 211, 238, 0.2);
-    }
-
-    .ref-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
+      text-shadow: 0 0 24px rgba(34, 211, 238, 0.25);
     }
 
     .ref-badge {
-      font-size: 0.8rem;
-      padding: 2px 10px;
+      font-size: 0.82rem;
+      padding: 3px 10px;
       border-radius: 999px;
-      background: rgba(34, 211, 238, 0.14);
-      border: 1px solid rgba(34, 211, 238, 0.45);
+      background: rgba(34, 211, 238, 0.16);
+      border: 1px solid rgba(34, 211, 238, 0.5);
       color: var(--cyan);
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .brand-sub {
@@ -146,9 +146,9 @@
     }
 
     .hamburger-btn {
-      font-size: 1.2rem;
-      padding: 6px 13px;
-      font-weight: 800;
+      font-size: 1.25rem;
+      padding: 6px 14px;
+      font-weight: 900;
     }
 
     /* 메인 컨테이너 */
@@ -161,6 +161,33 @@
       gap: 36px;
     }
 
+    /* 최상단 메인 빅 타이틀 */
+    .hero-banner {
+      text-align: center;
+      padding: 32px 20px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-main-title {
+      font-size: clamp(1.8rem, 4vw, 2.75rem);
+      font-weight: 950;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #ffffff 20%, var(--cyan) 60%, var(--purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 10px 30px rgba(34, 211, 238, 0.2);
+    }
+
+    .hero-sub-text {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 720px;
+    }
+
     .section-head {
       display: flex;
       align-items: baseline;
@@ -171,7 +198,7 @@
     }
 
     .section-title {
-      font-size: 1.32rem;
+      font-size: 1.35rem;
       font-weight: 850;
       letter-spacing: -0.01em;
     }
@@ -181,73 +208,125 @@
       color: var(--muted);
     }
 
-    /* 5대 핵심 구조 (일렬 나열) */
+    /* 5대 핵심 구조 */
     .roadmap-list {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 16px;
     }
 
     .roadmap-row {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 18px;
-      padding: 20px 22px;
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      padding: 22px;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
+      transition: transform 0.2s ease, border-color 0.2s ease;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
     }
 
     .roadmap-row:hover {
       transform: translateY(-3px);
       border-color: var(--cyan);
-      box-shadow: 0 18px 38px rgba(34, 211, 238, 0.16), 0 10px 24px rgba(0, 0, 0, 0.55);
     }
 
-    .row-left {
+    .row-header {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 16px;
+      margin-bottom: 12px;
     }
 
     .roadmap-num {
       font-size: 1.05rem;
       font-weight: 900;
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, var(--cyan), var(--blue), var(--purple));
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
       color: #050811;
       flex-shrink: 0;
-      box-shadow: 0 6px 18px rgba(59, 130, 246, 0.4);
     }
 
-    .row-content h3 {
-      font-size: 1.08rem;
-      font-weight: 800;
-      margin-bottom: 3px;
+    .row-title {
+      font-size: 1.15rem;
+      font-weight: 850;
     }
 
-    .row-content p {
-      font-size: 0.85rem;
+    /* 대시보드 상시 노출 수량/금액 박스 */
+    .dashboard-live-box {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-top: 10px;
+      background: rgba(7, 11, 20, 0.7);
+      padding: 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(34, 211, 238, 0.2);
+    }
+
+    .live-val-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .live-label {
+      font-size: 0.8rem;
       color: var(--muted);
     }
 
-    .row-tag {
-      font-size: 0.78rem;
+    .live-amount {
+      font-size: 1.3rem;
+      font-weight: 900;
       color: var(--cyan);
-      font-weight: 700;
-      white-space: nowrap;
     }
 
-    /* 순수익 배분 섹션 */
+    .live-krw {
+      font-size: 0.88rem;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    /* 유튜브/틱톡 50:50 나눔 */
+    .media-split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 600px) {
+      .media-split-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .media-card {
+      background: rgba(7, 11, 20, 0.75);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .media-card h4 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--cyan);
+    }
+
+    .media-card p {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* 순수익 배분 배너 */
     .profit-bar {
       background: linear-gradient(135deg, rgba(34, 211, 238, 0.12), rgba(168, 85, 247, 0.14));
       border: 1px solid rgba(168, 85, 247, 0.35);
@@ -268,7 +347,6 @@
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 16px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
 
     .profit-pct {
@@ -308,7 +386,7 @@
       flex-direction: column;
       justify-content: space-between;
       gap: 12px;
-      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.45);
       transition: transform 0.2s ease, border-color 0.2s ease;
     }
 
@@ -526,11 +604,11 @@
   <header>
     <div class="header-inner">
       <div class="brand-block">
-        <div class="brand-logo">HK WorldBank</div>
-        <div class="ref-row">
+        <div class="brand-logo-row">
+          <span class="brand-logo">HK WorldBank</span>
           <span class="ref-badge">추천인 ID: ljw2358</span>
-          <span class="brand-sub">인류와 기술이 공존하는 차세대 지능형 금융 혁신</span>
         </div>
+        <span class="brand-sub">60개국어 지원 AGI 삐니 가동 중</span>
       </div>
 
       <div class="header-actions">
@@ -556,71 +634,92 @@
   </header>
 
   <main>
+    <!-- 최상단 메인 빅 타이틀 헤더 -->
+    <section class="hero-banner">
+      <h1 class="hero-main-title">인류와 기술이 공존하는<br />차세대 디지털 금융 혁신</h1>
+      <p class="hero-sub-text">파이 개척자를 위한 분산 연동망과 UBI 사회 환원 금융 생태계</p>
+    </section>
+
     <!-- 5대 핵심 구조 -->
     <section>
       <div class="section-head">
         <h2 class="section-title">5대 핵심 구조</h2>
-        <span class="section-desc">차세대 디지털 금융 혁신 핵심 목차</span>
+        <span class="section-desc">HK WorldBank 차세대 디지털 금융 로드맵</span>
       </div>
+
       <div class="roadmap-list">
+        <!-- 01. 개인 자산 대시보드 (수량 및 금액 상시 노출) -->
         <div class="roadmap-row" onclick="openModuleModal('PI 수량')">
-          <div class="row-left">
+          <div class="row-header">
             <span class="roadmap-num">01</span>
-            <div class="row-content">
-              <h3>개인 자산 대시보드</h3>
-              <p>전체 수량과 개인 수량을 우선 집계하고 보유 수량 및 환산 금액을 실시간으로 확인합니다.</p>
+            <div class="row-title">개인 자산 대시보드</div>
+          </div>
+          <p style="font-size:0.88rem; color:var(--muted);">실시간 전체 보유 수량과 개인 자산을 상시 집계하여 투명하게 표시합니다.</p>
+          <div class="dashboard-live-box">
+            <div class="live-val-item">
+              <span class="live-label">전체 보유 수량 (Total PI)</span>
+              <span class="live-amount">15,480.50 PI</span>
+              <span class="live-krw">약 23,220,750 원</span>
+            </div>
+            <div class="live-val-item">
+              <span class="live-label">나의 보유 수량 (Personal PI)</span>
+              <span class="live-amount" style="color:#6ee7b7;">3,250.25 PI</span>
+              <span class="live-krw">약 4,875,375 원</span>
             </div>
           </div>
-          <span class="row-tag">수량 · 금액 조회 →</span>
         </div>
 
+        <!-- 02. 10대 분산 연동망 -->
         <div class="roadmap-row" onclick="openModuleModal('지갑연결')">
-          <div class="row-left">
+          <div class="row-header">
             <span class="roadmap-num">02</span>
-            <div class="row-content">
-              <h3>10대 분산 연동망</h3>
-              <p>지갑연결, 송금, 결제, 예치, 보상, 기본소득, 토큰스왑, DEX 스왑, LP 스테이킹, PI 수량 연동망.</p>
-            </div>
+            <div class="row-title">10대 분산 연동망</div>
           </div>
-          <span class="row-tag">10대 모듈 →</span>
+          <p style="font-size:0.88rem; color:var(--muted);">지갑연결, 송금, 결제, 예치, 보상, 기본소득, 토큰스왑, DEX 스왑, LP 스테이킹, PI 수량망을 연동합니다.</p>
         </div>
 
+        <!-- 03. 사회 환원 UBI -->
         <div class="roadmap-row" onclick="openModuleModal('기본소득')">
-          <div class="row-left">
+          <div class="row-header">
             <span class="roadmap-num">03</span>
-            <div class="row-content">
-              <h3>사회 환원 UBI</h3>
-              <p>순수익 30% UBI 환원, 30% 회사 경영비, 30% HK 사회재단(전략적 자본) 배분 구조.</p>
-            </div>
+            <div class="row-title">사회 환원 UBI</div>
           </div>
-          <span class="row-tag">30% UBI →</span>
+          <p style="font-size:0.88rem; color:var(--muted);">순수익 30% UBI 환원, 30% 회사 경영비, 30% HK 사회재단(전략적 예비 자본) 배분 구조를 지향합니다.</p>
         </div>
 
+        <!-- 04. AGI 삐니 -->
         <div class="roadmap-row" onclick="openModuleModal('보상')">
-          <div class="row-left">
+          <div class="row-header">
             <span class="roadmap-num">04</span>
-            <div class="row-content">
-              <h3>AGI 삐니</h3>
-              <p>60개국어 소통을 지원하는 파이 개척자 지능형 어시스턴트 '삐니'가 모듈 이용을 안내합니다.</p>
-            </div>
+            <div class="row-title">AGI 삐니</div>
           </div>
-          <span class="row-tag">AGI 삐니 →</span>
+          <p style="font-size:0.88rem; color:var(--muted);">60개국어 소통 지원 파이 개척자 AI 어시스턴트 '삐니'가 1:1 맞춤 금융 및 거래 프로세스를 안내합니다.</p>
         </div>
 
-        <div class="roadmap-row" onclick="scrollToFooter()">
-          <div class="row-left">
+        <!-- 05. 유튜브 · 틱톡 (반반 나눔) -->
+        <div class="roadmap-row">
+          <div class="row-header">
             <span class="roadmap-num">05</span>
-            <div class="row-content">
-              <h3>유튜브 · 틱톡</h3>
-              <p>공식 유튜브 및 틱톡 채널을 통해 생태계 소식과 개척자 가이드를 연결합니다.</p>
+            <div class="row-title">미디어 커뮤니티</div>
+          </div>
+          <p style="font-size:0.88rem; color:var(--muted);">공식 채널을 통해 글로벌 소식과 개척자 가이드를 상시 공유합니다.</p>
+          <div class="media-split-grid">
+            <div class="media-card">
+              <h4>YouTube 공식 채널</h4>
+              <p>생태계 업데이트 브리핑 및 영상 가이드 제공</p>
+              <button class="btn" style="align-self:flex-start; margin-top:4px;" onclick="window.open('https://www.youtube.com')">유튜브 이동 ↗</button>
+            </div>
+            <div class="media-card">
+              <h4>TikTok 공식 채널</h4>
+              <p>글로벌 개척자 숏폼 릴리스 및 틱톡 커뮤니티</p>
+              <button class="btn" style="align-self:flex-start; margin-top:4px;" onclick="window.open('https://www.tiktok.com')">틱톡 이동 ↗</button>
             </div>
           </div>
-          <span class="row-tag">채널 이동 →</span>
         </div>
       </div>
     </section>
 
-    <!-- 순수익 배분 시스템 -->
+    <!-- 순수익 배분 시스템 배너 -->
     <section class="profit-bar">
       <div class="section-head" style="margin-bottom: 4px;">
         <h2 class="section-title">순수익 사회 환원 및 운영 배분 시스템</h2>
@@ -645,11 +744,11 @@
       </div>
     </section>
 
-    <!-- 10대 분산 연동망 -->
+    <!-- 10대 분산 연동망 (PC 5열x2행, 모바일 2열x5행 그리드) -->
     <section>
       <div class="section-head">
         <h2 class="section-title">10대 분산 연동망</h2>
-        <span class="section-desc">KYC/KYB 인증 시 실행 가능 · 미인증 시 둘러보기 모드 제공</span>
+        <span class="section-desc">PC 5열 x 2행 / 모바일 2열 x 5행 그리드 · KYC/KYB 인증 시 실행</span>
       </div>
       <div id="modulesGrid" class="modules-grid"></div>
     </section>
@@ -661,12 +760,12 @@
       <div class="drawer-head">
         <div>
           <h3 style="font-size:1.12rem; font-weight:850;">HK WorldBank 메뉴 & 백서</h3>
-          <p style="font-size:0.78rem; color:var(--muted);">8대 에코시스템 · 서술형 렉서 백서 · 정책 및 규정</p>
+          <p style="font-size:0.78rem; color:var(--muted);">8대 에코시스템 · 서술형 렉서 백서 · HK-BANK · 규정</p>
         </div>
         <button class="btn" onclick="closeDrawer()">닫기 ✕</button>
       </div>
 
-      <!-- 8대 에코시스템 -->
+      <!-- 1. 글로벌 8대 에코시스템 -->
       <div class="drawer-block">
         <h4>1. 글로벌 8대 에코시스템 (스마트 글래스 제외)</h4>
         <ul class="eco-list">
@@ -681,7 +780,7 @@
         </ul>
       </div>
 
-      <!-- 서술형 렉서 백서 (A4 1~2장 분량의 서술형 구성) -->
+      <!-- 2. 서술형 렉서 백서 -->
       <div class="drawer-block">
         <h4>2. 렉서 40선 (Lexer 40) — 서술형 백서</h4>
         <div class="prose-box">
@@ -693,21 +792,19 @@
 
           순수익 배분 원칙 또한 명확합니다. 플랫폼에서 발생하는 순수익은 UBI 사회 환원 30%, 회사 경영비 30%, HK 사회재단 30%로 배분되며, 이 중 HK 사회재단 재원은 기업 인수 등 전략적 자본이 필요한 중대 사안 시 활용되는 핵심 예비 자원으로 관리됩니다. 이를 통해 단기적 수익 소비에 그치지 않고 생태계의 장기 확장성과 사회적 환원을 동시에 실현합니다.
 
-          접근 제어 및 보안 측면에서 HK WorldBank는 KYC 및 KYB 인증 체계를 갖추고 있습니다. 인증을 완료하지 않은 이용자는 안전한 탐색을 위해 둘러보기 모드로만 진입할 수 있으며, 인증 완료 후 실제 송금, 결제, 스왑, 예치·스테이킹 실행이 가능하도록 설계하여 이용자 보호와 건전성을 강화합니다. 아울러 일상 비대면 금융을 담당하는 HK-BANK 인터넷은행 모델(가변금리: 1년 미만 6%, 1년 만기 13%, 2년 만기 16%, 3년 만기 20%)과의 역할 구분을 통해 디지털 개척자 금융과 일상 금융의 균형을 추구합니다.
-
-          산업 및 공간 연계 측면에서는 울산·경주·포항 해오름 특별시 산업 축과 연계된 로보틱스(루미봇), 도심 항공 교통(UAM), 인공태양 핵융합, 퀀텀 바이오, 우주 산업, 부품 뱅크, 방위 산업 등 8대 에코시스템과 경주시 서면 165층 인프라 기준 TJ85 소유권 양도 약정을 아우르며, 디지털 자산법과 FATF 트래블 룰 등 글로벌 컴플라이언스 기준을 준수하여 지속 가능한 차세대 금융 플랫폼으로 발전해 나갑니다.
+          접근 제어 및 보안 측면에서 HK WorldBank는 KYC 및 KYB 인증 체계를 갖추고 있습니다. 인증을 완료하지 않은 이용자는 안전한 탐색을 위해 둘러보기 모드로만 진입할 수 있으며, 인증 완료 후 실제 송금, 결제, 스왑, 예치·스테이킹 실행이 가능하도록 설계하여 이용자 보호와 건전성을 강화합니다.
         </div>
       </div>
 
-      <!-- 자주 묻는 질문 20선 / 3대 폴리시스 / 21개국 디지털 자산법 / 해킹 방어 / FATF 트래블 룰 / 제재 리스트 -->
+      <!-- 3. 자주 묻는 질문 20선 / 폴리시스 / HK-BANK -->
       <div class="drawer-block">
-        <h4>3. 자주 묻는 질문 20선 · 폴리시스 · 컴플라이언스</h4>
+        <h4>3. 자주 묻는 질문 · 폴리시스 · HK-BANK</h4>
         <ul class="eco-list">
           <li><strong>자주 묻는 질문 20선 (FAQ 20):</strong> 지갑연결, KYC/KYB 인증, 둘러보기 모드, 예치/스테이킹 이율 및 중도 해지(8.5%), 수량·금액 조회 안내.</li>
           <li><strong>3대 폴리시스 (3 Policies):</strong> 이용자 자산 보호 정책, KYC/KYB 및 자금세탁방지(AML) 정책, 분산 연동망 운영·보안 정책.</li>
-          <li><strong>21개국 디지털 자산법 & 해킹 방어 컴플라이언스:</strong> 21개국 디지털 자산 규제 정합성 검토 및 다중 서명·이상 거래 탐지 기반 해킹 방어 체계.</li>
-          <li><strong>FATF 트래블 룰 & 실시간 제약 리스트:</strong> 가상자산 이전 시 송·수신자 정보 검증 및 실시간 제재·제약 리스트 대조 절차.</li>
-          <li><strong>HK-BANK (인터넷은행):</strong> 비대면 일상 금융 모델(가변금리: 1년 미만 6%, 1년 만기 13%, 2년 만기 16%, 3년 만기 20%).</li>
+          <li><strong>21개국 디지털 자산법 & 해킹 방어 컴플라이언스:</strong> 21개국 디지털 자산 규제 정합성 검토 및 다중 서명 기반 해킹 방어 체계.</li>
+          <li><strong>FATF 트래블 룰 & 실시간 제약 리스트:</strong> 가상자산 이전 시 송·수신자 정보 검증 및 실시간 제재 리스트 대조.</li>
+          <li><strong>HK-BANK (인터넷은행):</strong> 카카오뱅크/토스뱅크 모델 기반 비대면 일상 금융 (가변금리: 1년 미만 6%, 1년 만기 13%, 2년 만기 16%, 3년 만기 20%).</li>
         </ul>
       </div>
     </aside>
@@ -732,8 +829,8 @@
   <footer id="siteFooter">
     <div class="footer-inner">
       <div>
-        <div><strong>HK WorldBank</strong> · 추천인 ID: <code>ljw2358</code></div>
-        <div>문의 이메일: <a href="mailto:support@hkwb.world">support@hkwb.world</a></div>
+        <div><strong>HK WorldBank</strong> · 추천인 ID: <code style="color:var(--cyan); font-weight:800;">ljw2358</code></div>
+        <div>문의 이메일: <a href="mailto:support@hkwb.world" style="color:var(--cyan);">support@hkwb.world</a></div>
       </div>
       <div class="footer-links">
         <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">YouTube</a>
@@ -755,15 +852,15 @@
 
     const modules = [
       { name: "지갑연결", desc: "개인 지갑 연결 상태를 확인하고 주소를 검증합니다." },
-      { name: "송금", desc: "받을 자산 종류, 금액, 수량 및 수신 지갑 주소를 입력해 송금합니다." },
-      { name: "결제", desc: "결제 금액을 입력하면 QR 코드와 결제 정보를 즉시 생성합니다." },
+      { name: "송금", desc: "보낼 자산(7종), 금액, 수량 및 수신 주소를 입력해 송금합니다." },
+      { name: "결제", desc: "결제 금액을 입력하면 QR 코드와 결제 정보를 생성합니다." },
       { name: "예치", desc: "1년 미만 8.5%, 1년 이상 13%, 2년 이상 19%, 3년 이상 24% (중도 해지 8.5%)." },
       { name: "보상", desc: "생태계 기여 보상을 확인하고 수령합니다." },
       { name: "기본소득", desc: "순수익 30% UBI 사회 환원 분배 내역을 확인합니다." },
       { name: "토큰스왑", desc: "보낼 자산과 받을 자산(7종)의 종류, 금액, 수량을 선택해 스왑합니다." },
       { name: "DEX 스왑", desc: "7종 자산 기준 DEX 스왑 호가 및 수량을 확인하고 교환합니다." },
-      { name: "LP 스테이킹", desc: "예치 모델과 동일하게 운영되며, 파밍은 전체 수량 기준으로 처리합니다." },
-      { name: "PI 수량", desc: "전체 수량과 개인 수량을 우선 표시하고 금액을 함께 안내합니다." }
+      { name: "LP 스테이킹", desc: "예치 모델과 동일하게 운영되며 파밍은 전체 수량 기준입니다." },
+      { name: "PI 수량", desc: "전체 수량과 개인 수량을 우선 표시하고 금액을 안내합니다." }
     ];
 
     function renderModules() {
@@ -803,7 +900,7 @@
     function changeLanguage() {
       const val = document.getElementById("langSelect").value;
       if (val === "multi") {
-        alert("60개국어 지원 모드가 선택되었습니다.");
+        alert("60개국어 다국어 지원 모드가 전환되었습니다.");
       }
     }
 
@@ -819,10 +916,6 @@
       if (event.target === event.currentTarget) closeFn();
     }
 
-    function scrollToFooter() {
-      document.getElementById("siteFooter").scrollIntoView({ behavior: "smooth" });
-    }
-
     function assetOptionsHtml(selectedIndex = 0) {
       return sevenAssets.map((a, i) => `<option value="${a}" ${i === selectedIndex ? "selected" : ""}>${a}</option>`).join("");
     }
@@ -833,7 +926,7 @@
       document.getElementById("modalTitle").textContent = `${mod.name} ${state.kycVerified ? "" : "(둘러보기 모드)"}`;
       document.getElementById("modalDesc").textContent = state.kycVerified
         ? mod.desc
-        : `${mod.desc} (현재 미인증 둘러보기 상태이며, 상단 버튼으로 KYC/KYB 인증 상태를 전환할 수 있습니다.)`;
+        : `${mod.desc} (현재 미인증 둘러보기 상태이며 상단 버튼으로 KYC/KYB 상태를 전환할 수 있습니다.)`;
 
       const body = document.getElementById("modalBody");
       if (mod.name === "PI 수량") {
@@ -891,7 +984,7 @@
       } else if (mod.name === "송금") {
         body.innerHTML = `
           <div class="field">
-            <label>받을 자산 종류</label>
+            <label>보낼 자산 종류</label>
             <select class="input-select">${assetOptionsHtml(0)}</select>
           </div>
           <div class="field">
@@ -929,7 +1022,7 @@
 
     function executeModuleAction() {
       if (!state.kycVerified) {
-        alert("현재 둘러보기 모드입니다. 실행하려면 상단에서 KYC/KYB 인증 완료 상태로 전환해 주세요.");
+        alert("현재 둘러보기 모드입니다. 실제 실행을 원하시면 상단에서 KYC/KYB 인증 완료 상태로 전환해 주세요.");
         return;
       }
       alert(`[${state.currentModule}] 요청이 처리되었습니다.`);
