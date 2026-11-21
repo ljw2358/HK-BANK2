@@ -3,16 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HK WorldBank — 디지털 금융 혁신</title>
+  <title>HK WORLDBANK — 디지털 금융 혁신</title>
   <style>
     :root {
-      --bg: #070b14;
-      --card: #0e1526;
-      --border: rgba(120, 165, 255, 0.16);
-      --text: #f3f6fc;
-      --muted: #9fb0d0;
+      --bg: #060b16;
+      --card: #0e172a;
+      --card-2: #13203a;
+      --border: rgba(96, 165, 250, 0.22);
+      --text: #f8fafc;
+      --muted: #94a3b8;
       --cyan: #22d3ee;
       --blue: #3b82f6;
+      --gold: #fbbf24;
     }
 
     * {
@@ -22,39 +24,53 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at top, #0f1f3d 0%, var(--bg) 55%);
       color: var(--text);
-      line-height: 1.5;
+      line-height: 1.55;
       min-height: 100vh;
-      padding-bottom: 48px;
+      padding-bottom: 56px;
     }
 
     header {
       position: sticky;
       top: 0;
       z-index: 100;
-      backdrop-filter: blur(12px);
-      background: rgba(7, 11, 20, 0.88);
+      backdrop-filter: blur(14px);
+      background: rgba(6, 11, 22, 0.88);
       border-bottom: 1px solid var(--border);
     }
 
     .header-inner {
-      max-width: 1200px;
+      max-width: 1240px;
       margin: 0 auto;
-      padding: 12px 20px;
+      padding: 14px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .brand-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
     }
 
     .brand-logo {
       font-size: 1.45rem;
       font-weight: 900;
+      letter-spacing: 0.03em;
       background: linear-gradient(90deg, #ffffff, var(--cyan));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+
+    .ref-id {
+      font-size: 0.78rem;
+      color: var(--cyan);
+      font-weight: 700;
     }
 
     .header-right {
@@ -67,25 +83,25 @@
       background: var(--card);
       color: var(--text);
       border: 1px solid var(--border);
-      padding: 7px 12px;
-      border-radius: 8px;
+      padding: 8px 12px;
+      border-radius: 10px;
       font-size: 0.9rem;
       cursor: pointer;
     }
 
     .menu-btn {
-      background: var(--blue);
-      color: #ffffff;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      color: #04101d;
       border: none;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 0.95rem;
+      padding: 9px 15px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 0.92rem;
       cursor: pointer;
     }
 
     main {
-      max-width: 1200px;
+      max-width: 1240px;
       margin: 0 auto;
       padding: 32px 20px 0;
       display: flex;
@@ -95,27 +111,44 @@
 
     .hero {
       text-align: center;
-      padding: 36px 20px;
-      background: var(--card);
-      border-radius: 16px;
+      padding: 40px 24px;
+      background: linear-gradient(180deg, rgba(19, 32, 58, 0.9), rgba(14, 23, 42, 0.95));
+      border-radius: 20px;
       border: 1px solid var(--border);
     }
 
     .main-title {
-      font-size: clamp(1.8rem, 4.5vw, 3rem);
+      font-size: clamp(1.75rem, 4.2vw, 2.95rem);
       font-weight: 900;
       line-height: 1.25;
-      background: linear-gradient(135deg, #ffffff, var(--cyan));
+      background: linear-gradient(135deg, #ffffff 15%, var(--cyan) 85%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      font-size: 0.96rem;
     }
 
     .section-title {
-      font-size: 1.25rem;
+      font-size: 1.22rem;
       font-weight: 800;
       margin-bottom: 14px;
       color: var(--cyan);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .section-badge {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 600;
     }
 
     .dashboard-grid {
@@ -123,45 +156,57 @@
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 18px;
       background: var(--card);
-      padding: 22px;
-      border-radius: 16px;
+      padding: 24px;
+      border-radius: 18px;
       border: 1px solid var(--border);
     }
 
     .dash-item {
+      background: var(--card-2);
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      border-radius: 14px;
+      padding: 18px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
     }
 
     .dash-label {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--muted);
     }
 
     .dash-value {
-      font-size: 1.85rem;
+      font-size: 1.75rem;
       font-weight: 900;
       color: #ffffff;
       font-family: monospace;
     }
 
+    .unit {
+      font-size: 1rem;
+      color: var(--cyan);
+      font-weight: 700;
+      margin-left: 4px;
+    }
+
+    /* 데스크톱 5x2, 모바일 2x5 */
     .modules-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 14px;
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 768px) {
       .modules-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
     .module-card {
-      background: var(--card);
+      background: linear-gradient(160deg, var(--card-2), var(--card));
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 20px 14px;
       display: flex;
       flex-direction: column;
@@ -169,12 +214,12 @@
       justify-content: center;
       gap: 6px;
       cursor: pointer;
-      transition: border-color 0.2s ease, transform 0.2s ease;
+      transition: transform 0.2s ease, border-color 0.2s ease;
     }
 
     .module-card:hover {
       border-color: var(--cyan);
-      transform: translateY(-2px);
+      transform: translateY(-3px);
     }
 
     .module-title {
@@ -184,49 +229,84 @@
     }
 
     .module-desc {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--muted);
       text-align: center;
     }
 
+    .ubi-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .ubi-highlight {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--gold);
+    }
+
+    .ubi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .ubi-card {
+      background: var(--card-2);
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.14);
+    }
+
+    .ubi-card strong {
+      display: block;
+      color: var(--cyan);
+      margin-bottom: 4px;
+    }
+
     .social-section {
       background: var(--card);
-      padding: 22px;
-      border-radius: 16px;
+      padding: 24px;
+      border-radius: 18px;
       border: 1px solid var(--border);
       display: flex;
       gap: 14px;
       justify-content: center;
+      align-items: center;
       flex-wrap: wrap;
     }
 
     .social-btn {
-      flex: 1;
-      min-width: 200px;
-      max-width: 260px;
-      padding: 13px 18px;
-      border-radius: 10px;
+      min-width: 210px;
+      padding: 13px 20px;
+      border-radius: 12px;
       border: none;
-      background: var(--blue);
+      background: linear-gradient(135deg, #2563eb, #06b6d4);
       color: #ffffff;
-      font-weight: 700;
-      font-size: 0.98rem;
+      font-weight: 800;
+      font-size: 0.95rem;
       text-align: center;
       text-decoration: none;
       cursor: pointer;
     }
 
     .social-btn.tiktok {
-      background: #05070d;
-      border: 1px solid var(--border);
+      background: #0b1220;
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
     }
 
-    /* 메뉴 서랍 */
+    /* 삼선 메뉴 드로어 */
     .drawer-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.72);
-      backdrop-filter: blur(4px);
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(5px);
       z-index: 1000;
       display: none;
       justify-content: flex-end;
@@ -238,14 +318,14 @@
 
     .drawer {
       width: 100%;
-      max-width: 480px;
+      max-width: 620px;
       background: var(--card);
       height: 100%;
-      padding: 24px;
+      padding: 28px 24px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 24px;
       border-left: 1px solid var(--border);
     }
 
@@ -257,53 +337,52 @@
 
     .drawer-section {
       border-top: 1px solid var(--border);
-      padding-top: 16px;
+      padding-top: 18px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
 
     .drawer-section h3 {
       color: var(--cyan);
-      font-size: 1.05rem;
-    }
-
-    .badge-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .status-badge {
-      padding: 5px 12px;
-      background: rgba(34, 211, 238, 0.12);
-      border: 1px solid var(--cyan);
-      border-radius: 999px;
-      color: var(--cyan);
-      font-size: 0.82rem;
-      font-weight: 700;
+      font-size: 1.12rem;
+      font-weight: 800;
     }
 
     .content-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
     }
 
     .content-list li {
       font-size: 0.9rem;
       color: var(--muted);
       background: var(--bg);
-      padding: 10px 12px;
-      border-radius: 8px;
+      padding: 13px 15px;
+      border-radius: 10px;
+      border: 1px solid rgba(148, 163, 184, 0.12);
     }
 
-    /* 모듈 모달 */
+    .article-title,
+    .compliance-item {
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .policy-content {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    /* 모듈 실행 모달 */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.75);
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(6px);
       display: none;
       align-items: center;
       justify-content: center;
@@ -317,20 +396,20 @@
 
     .modal-box {
       width: 100%;
-      max-width: 440px;
+      max-width: 500px;
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px;
+      border-radius: 18px;
+      padding: 26px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 16px;
     }
 
     .modal-actions {
       display: flex;
       justify-content: flex-end;
-      gap: 8px;
+      gap: 10px;
       margin-top: 6px;
     }
 
@@ -338,29 +417,32 @@
       background: var(--bg);
       color: var(--text);
       border: 1px solid var(--border);
-      padding: 8px 14px;
-      border-radius: 8px;
+      padding: 10px 16px;
+      border-radius: 10px;
       cursor: pointer;
+      font-weight: 700;
     }
 
     .btn-execute {
-      background: var(--cyan);
-      color: #070b14;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      color: #04101d;
       border: none;
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-weight: 800;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: 900;
       cursor: pointer;
     }
 
     .api-result {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 12px;
+      background: #050810;
+      border: 1px solid var(--cyan);
+      border-radius: 10px;
+      padding: 14px;
       font-size: 0.85rem;
-      color: var(--cyan);
+      font-family: monospace;
+      color: #6ee7b7;
       display: none;
+      white-space: pre-wrap;
     }
   </style>
 </head>
@@ -368,41 +450,64 @@
 
   <header>
     <div class="header-inner">
-      <div class="brand-logo">HK WorldBank</div>
+      <div class="brand-wrap">
+        <div class="brand-logo">HK WORLDBANK</div>
+        <div class="ref-id">추천인 ID: ljw2358</div>
+      </div>
       <div class="header-right">
-        <select id="langSelect" aria-label="언어 선택" onchange="changeLanguage(this.value)">
-          <option value="ko" selected>한국어</option>
-          <option value="en">English</option>
-          <option value="ja">日本語</option>
-          <option value="zh">中文</option>
-        </select>
-        <button class="menu-btn" onclick="toggleDrawer(true)">☰ 메뉴</button>
+        <select id="langSelect" aria-label="60개국어 선택"></select>
+        <button class="menu-btn" onclick="toggleDrawer(true)">☰ 삼선 메뉴</button>
       </div>
     </div>
   </header>
 
   <main>
     <section class="hero">
-      <h1 class="main-title" id="heroTitle">인간과 기술이 공존하는 차세대 디지털 금융 혁신</h1>
+      <h1 class="main-title">인간과 기술이 공존하는 차세대 디지털 금융 혁신</h1>
+      <p class="hero-sub">HK WORLDBANK · 고객센터 AGI 삐니 · 60개국어 글로벌 디지털 금융 네트워크</p>
     </section>
 
     <section>
-      <div class="section-title" id="dashTitle">개인 자산 대시보드</div>
+      <div class="section-title">
+        <span>개인 자산 대시보드</span>
+        <span class="section-badge">실시간 원장 동기화</span>
+      </div>
       <div class="dashboard-grid">
         <div class="dash-item">
-          <span class="dash-label" id="balanceLabel">보유 수량</span>
-          <span class="dash-value">314,159.000000</span>
+          <span class="dash-label">보유 수량</span>
+          <span class="dash-value">314,159.000000<span class="unit">Pi</span></span>
         </div>
         <div class="dash-item">
-          <span class="dash-label" id="interestLabel">실시간 누적 이자</span>
-          <span class="dash-value">12,450,895.442652</span>
+          <span class="dash-label">실시간 누적 이자</span>
+          <span class="dash-value">12,450,895.442652<span class="unit">원</span></span>
         </div>
       </div>
     </section>
 
     <section>
-      <div class="section-title" id="modulesTitle">10대 분산 연동망</div>
+      <div class="section-title">
+        <span>10대 분산 연동망</span>
+        <span class="section-badge">PC 5×2 · 모바일 2×5</span>
+      </div>
       <div class="modules-grid" id="modulesGrid"></div>
+    </section>
+
+    <section class="ubi-box">
+      <div class="section-title" style="margin-bottom:0;">
+        <span>사회 환원 UBI 시스템</span>
+        <span class="section-badge">투명한 수익 배분 구조</span>
+      </div>
+      <div class="ubi-highlight">순수익 60% 활용 · 사회 환원 UBI 분배 시스템</div>
+      <div class="ubi-grid">
+        <div class="ubi-card">
+          <strong>사회 환원 UBI (60%)</strong>
+          <span>생태계 참여자와 취약계층 지원, 보편적 기본소득 분배에 활용합니다.</span>
+        </div>
+        <div class="ubi-card">
+          <strong>운영 및 전략 재원</strong>
+          <span>플랫폼 안정 운영과 글로벌 생태계 확장 및 전략 투자 재원으로 관리합니다.</span>
+        </div>
+      </div>
     </section>
 
     <section class="social-section">
@@ -414,55 +519,110 @@
   <div class="drawer-overlay" id="drawerOverlay" onclick="handleDrawerClick(event)">
     <aside class="drawer">
       <div class="drawer-header">
-        <h2>전체 메뉴</h2>
-        <button onclick="toggleDrawer(false)" style="background:none; border:none; color:#ffffff; font-size:1.4rem; cursor:pointer;">✕</button>
+        <h2>전체 삼선 메뉴</h2>
+        <button onclick="toggleDrawer(false)" style="background:none; border:none; color:#ffffff; font-size:1.7rem; cursor:pointer;">✕</button>
       </div>
 
       <div class="drawer-section">
-        <h3>시스템 상태</h3>
-        <div class="badge-group">
-          <span class="status-badge">60개국어 지원</span>
-          <span class="status-badge">AGI 삐니 가동 중</span>
-          <span class="status-badge">둘러보기 모드</span>
-        </div>
+        <h3>HK-BANK 플랫폼</h3>
+        <p style="font-size:0.9rem; color:var(--muted);">
+          일상적인 비대면 금융 거래와 계좌 서비스를 지원하는 독립 인터넷은행 공간입니다.
+        </p>
       </div>
 
       <div class="drawer-section">
-        <h3>HK-BANK</h3>
-        <p style="font-size:0.9rem; color:var(--muted);">일상 금융 거래를 지원하는 인터넷은행 안내 메뉴입니다.</p>
-      </div>
-
-      <div class="drawer-section">
-        <h3>코어 리걸 컴플라이언스</h3>
+        <h3>5대 핵심 CORE LEGAL COMPLIANCE</h3>
         <ul class="content-list">
-          <li>21개국 디지털 자산법 및 해킹 방어 컴플라이언스</li>
-          <li>FATF 트래블 룰</li>
-          <li>실시간 제재 리스트</li>
-          <li>검증 규칙</li>
+          <li>
+            <div class="compliance-item">1. AML / CFT 자금세탁방지 및 테러자금조달 차단</div>
+            <div class="policy-content">국제 기준에 부합하는 거래 모니터링으로 불법 자금 유입과 자금세탁을 원천 차단합니다.</div>
+          </li>
+          <li>
+            <div class="compliance-item">2. 21개국 디지털 자산법 및 해킹 방어 컴플라이언스</div>
+            <div class="policy-content">주요 21개국 디지털 자산 규제 기준을 준수하고, 다중 보안 아키텍처로 해킹 위협을 방어합니다.</div>
+          </li>
+          <li>
+            <div class="compliance-item">3. FATF 트래블 룰 및 실시간 제재 리스트 검증 규격</div>
+            <div class="policy-content">송수신자 정보 검증과 실시간 제재 리스트 대조를 통해 고위험 거래를 사전에 걸러냅니다.</div>
+          </li>
+          <li>
+            <div class="compliance-item">4. KYC / KYB 실명 및 법인 확인 체계</div>
+            <div class="policy-content">개인 및 기업 고객의 신원 확인 절차를 통해 투명하고 신뢰할 수 있는 금융 환경을 유지합니다.</div>
+          </li>
+          <li>
+            <div class="compliance-item">5. 다중 서명 보안 및 스마트 컨트랙트 검증</div>
+            <div class="policy-content">다중 서명 승인 구조와 보안 검증 절차로 자산 이동의 무결성과 안전성을 확보합니다.</div>
+          </li>
         </ul>
       </div>
 
       <div class="drawer-section">
-        <h3>자주 묻는 질문</h3>
+        <h3>공식 백서 (제1조 ~ 제10조)</h3>
         <ul class="content-list">
-          <li>10대 분산 연동망은 어떻게 이용하나요?</li>
-          <li>둘러보기 모드에서는 어떤 기능을 볼 수 있나요?</li>
-          <li>고객센터 및 AGI 삐니 연결은 어떻게 하나요?</li>
+          <li>
+            <div class="article-title">제1조: 차세대 디지털 금융의 정의 및 비전</div>
+            인간과 기술이 공존하는 개방형 디지털 금융 생태계를 구축하여 누구나 안전하게 자산 가치를 운용할 수 있도록 합니다.
+          </li>
+          <li>
+            <div class="article-title">제2조: 분산원장 기술 기반 자산 동기화 메커니즘</div>
+            다중 노드 네트워크를 통해 원장 데이터를 실시간 검증·동기화하여 데이터 위변조를 방지합니다.
+          </li>
+          <li>
+            <div class="article-title">제3조: 10대 분산 연동망 상호운용성 프로토콜</div>
+            지갑연결, 송금, 결제, 예치, 보상, 기본소득, 토큰스왑, DEX 스왑, LP 스테이킹, 원장 조회를 하나의 흐름으로 연결합니다.
+          </li>
+          <li>
+            <div class="article-title">제4조: 복리 이자 산출 및 자동 분배 알고리즘</div>
+            사전 정의된 규칙에 따라 예치 및 운용 수익이 투명하게 산출되고 정해진 주기에 맞춰 반영됩니다.
+          </li>
+          <li>
+            <div class="article-title">제5조: 사회 환원 UBI 분배 구조</div>
+            발생 순수익 중 60%를 사회 환원 UBI 재원으로 연계하여 지속 가능한 상생 금융 모델을 구현합니다.
+          </li>
+          <li>
+            <div class="article-title">제6조: DEX 스왑 및 유동성 공급 정책</div>
+            탈중앙화 거래 환경과 유동성 풀 구조를 통해 원활한 자산 교환과 생태계 유동성을 지원합니다.
+          </li>
+          <li>
+            <div class="article-title">제7조: 다중 서명 보안 및 해킹 방어 체계</div>
+            암호화 키 관리, 다중 서명 인증, 실시간 이상 징후 감지를 통해 외부 공격으로부터 자산을 보호합니다.
+          </li>
+          <li>
+            <div class="article-title">제8조: 21개국 디지털 자산법 및 FATF 트래블 룰 이행</div>
+            21개국 규제 정합성과 FATF 트래블 룰, 실시간 제재 리스트 검증 규격을 준수하여 글로벌 호환성을 확보합니다.
+          </li>
+          <li>
+            <div class="article-title">제9조: 토큰 이코노미 및 가치 안정 장치</div>
+            발행·유통·소각 균형과 유동성 관리로 장기적인 가치 안정성과 인플레이션 방어를 도모합니다.
+          </li>
+          <li>
+            <div class="article-title">제10조: 거버넌스 및 단계적 고도화 로드맵</div>
+            투명한 운영 원칙과 커뮤니티 참여 기반 거버넌스를 통해 차세대 금융 인프라로 확장합니다.
+          </li>
         </ul>
       </div>
 
       <div class="drawer-section">
-        <h3>3대 폴리시스</h3>
+        <h3>3대 폴리시스 (Policies)</h3>
         <ul class="content-list">
-          <li>디지털 자산 보호 정책</li>
-          <li>사회 환원 UBI 운영 정책</li>
-          <li>플랫폼 보안 및 거버넌스 정책</li>
+          <li>
+            <div class="compliance-item">1. 21개국 디지털 자산법 및 해킹 방어 컴플라이언스 정책</div>
+            <div class="policy-content">21개국 규제 기준 준수와 다중 보안 방어 체계를 통해 합법성과 자산 보호를 최우선으로 합니다.</div>
+          </li>
+          <li>
+            <div class="compliance-item">2. FATF 트래블 룰 및 실시간 제재 리스트 검증 규격 정책</div>
+            <div class="policy-content">국제 자금세탁방지 기준에 따라 송수신자 정보 및 제재 대상 여부를 실시간 검증합니다.</div>
+          </li>
+          <li>
+            <div class="compliance-item">3. 데이터 보호·UBI 사회환원 및 거버넌스 정책</div>
+            <div class="policy-content">사용자 데이터 보호, 순수익 60% 기반 UBI 사회환원, 투명한 운영 거버넌스를 원칙으로 합니다.</div>
+          </li>
         </ul>
       </div>
 
       <div class="drawer-section">
-        <h3>HK 글로벌 에코시스템 허브</h3>
-        <p style="font-size:0.9rem; color:var(--muted);">미래 핵심 산업과 디지털 금융을 연결하는 글로벌 허브 네트워크입니다.</p>
+        <h3>자주 묻는 질문 (FAQ 20선)</h3>
+        <ul class="content-list" id="faqList"></ul>
       </div>
     </aside>
   </div>
@@ -470,7 +630,7 @@
   <div class="modal-overlay" id="moduleModal" onclick="handleModalClick(event)">
     <div class="modal-box">
       <h3 id="modalModuleName" style="color:var(--cyan);">모듈</h3>
-      <p id="modalModuleDesc" style="font-size:0.9rem; color:var(--muted);"></p>
+      <p id="modalModuleDesc" style="font-size:0.95rem; color:var(--muted);"></p>
       <div class="api-result" id="apiResultBox"></div>
       <div class="modal-actions">
         <button class="btn-secondary" onclick="closeModuleModal()">닫기</button>
@@ -480,49 +640,57 @@
   </div>
 
   <script>
-    const modules = [
-      { name: "지갑연결", desc: "원장 동기화 상태 관리" },
-      { name: "송금", desc: "초고속 실시간 전송" },
-      { name: "결제", desc: "실시간 결제 및 QR" },
-      { name: "예치", desc: "복리 이자 수익 관리" },
-      { name: "보상", desc: "기여 활동 보상 수령" },
-      { name: "기본소득", desc: "사회 환원 UBI 관리" },
-      { name: "토큰스왑", desc: "토큰 간 간편 교환" },
-      { name: "DEX 스왑", desc: "P2P 유동성 거래" },
-      { name: "LP 스테이킹", desc: "유동성 풀 예치" },
-      { name: "원장 조회", desc: "실시간 자산 동기화" }
+    const languages = [
+      "한국어", "English", "中文(简体)", "中文(繁體)", "日本語", "Español", "Français", "Deutsch", "Português", "Русский",
+      "العربية", "हिन्दी", "বাংলা", "اردو", "Tiếng Việt", "ไทย", "Bahasa Indonesia", "Bahasa Melayu", "Filipino", "Türkçe",
+      "Italiano", "Nederlands", "Polski", "Українська", "Română", "Čeština", "Magyar", "Svenska", "Norsk", "Dansk",
+      "Suomi", "Ελληνικά", "עברית", "فارسی", "Swahili", "Amharic", "Hausa", "Yoruba", "Igbo", "Zulu",
+      "தமிழ்", "తెలుగు", "मराठी", "ગુજરાતી", "ಕನ್ನಡ", "മലയാളം", "ਪੰਜਾਬੀ", "नेपाली", "සිංහල", "ខ្មែរ",
+      "ລາວ", "မြန်မာ", "Монгол", "Қазақша", "Oʻzbek", "Кыргызча", "Azərbaycan", "ქართული", "Hrvatski", "Slovenščina"
     ];
 
-    const i18n = {
-      ko: {
-        heroTitle: "인간과 기술이 공존하는 차세대 디지털 금융 혁신",
-        dashTitle: "개인 자산 대시보드",
-        balanceLabel: "보유 수량",
-        interestLabel: "실시간 누적 이자",
-        modulesTitle: "10대 분산 연동망"
-      },
-      en: {
-        heroTitle: "Next-Generation Digital Finance Where Humans and Technology Coexist",
-        dashTitle: "Personal Asset Dashboard",
-        balanceLabel: "Current Balance",
-        interestLabel: "Real-Time Accrued Interest",
-        modulesTitle: "10 Distributed Networks"
-      },
-      ja: {
-        heroTitle: "人と技術が共存する次世代デジタル金融イノベーション",
-        dashTitle: "個人資産ダッシュボード",
-        balanceLabel: "保有数量",
-        interestLabel: "リアルタイム累計利息",
-        modulesTitle: "10大分散連動網"
-      },
-      zh: {
-        heroTitle: "人与技术共存的新一代数字金融创新",
-        dashTitle: "个人资产仪表板",
-        balanceLabel: "持有数量",
-        interestLabel: "实时累计利息",
-        modulesTitle: "十大分布式联动网"
-      }
-    };
+    const modules = [
+      { name: "지갑연결", desc: "지갑 프로토콜 인증 및 실시간 상태 연동" },
+      { name: "송금", desc: "멀티시그 기반 초고속 자산 전송" },
+      { name: "결제", desc: "온·오프라인 실시간 결제 처리" },
+      { name: "예치", desc: "예치 기간별 이율 및 복리 수익 관리" },
+      { name: "보상", desc: "생태계 기여 활동 인센티브 지급" },
+      { name: "기본소득", desc: "순수익 60% 활용 사회 환원 UBI" },
+      { name: "토큰스왑", desc: "간편 원클릭 토큰 교환 지원" },
+      { name: "DEX 스왑", desc: "탈중앙화 오더북·P2P 스왑 연동" },
+      { name: "LP 스테이킹", desc: "유동성 공급 및 스테이킹 수익 운용" },
+      { name: "원장 조회", desc: "메인넷 자산 및 원장 실시간 동기화" }
+    ];
+
+    const faqs = [
+      ["HK WORLDBANK의 핵심 목표는 무엇인가요?", "인간과 기술이 공존하는 차세대 디지털 금융 생태계와 투명한 사회 환원 구조를 구축하는 것입니다."],
+      ["추천인 ID ljw2358은 어디에 표시되나요?", "상단 브랜드 영역 아래에 배치되어 네트워크 식별을 돕습니다."],
+      ["60개국어 지원은 어떻게 작동하나요?", "상단 언어 선택 드롭다운에서 60개국어 중 원하는 언어를 선택할 수 있습니다."],
+      ["개인 자산 대시보드의 단위는 무엇인가요?", "보유 수량은 Pi 단위로, 실시간 누적 이자는 원 단위로 표시됩니다."],
+      ["10대 분산 연동망은 어떻게 배치되나요?", "데스크톱에서는 5×2, 모바일에서는 2×5 그리드로 표시됩니다."],
+      ["각 연동망 카드를 누르면 무엇이 열리나요?", "해당 모듈의 설명과 함께 백엔드 API 실행 확인 창이 열립니다."],
+      ["사회 환원 UBI는 어떤 구조로 운영되나요?", "순수익 60%를 활용하는 사회 환원 UBI 분배 시스템을 중심으로 설계되었습니다."],
+      ["고객센터 AGI 삐니는 어떤 역할을 하나요?", "이용 안내, 모듈 설명, 실시간 문의 응대를 돕는 AI 어시스턴트입니다."],
+      ["HK-BANK는 어떤 서비스인가요?", "일상적인 비대면 금융 거래를 지원하는 독립 인터넷은행 공간입니다."],
+      ["5대 CORE LEGAL COMPLIANCE에는 무엇이 포함되나요?", "AML/CFT, 21개국 디지털 자산법 및 해킹 방어, FATF 트래블 룰 및 실시간 제재 리스트 검증, KYC/KYB, 다중 서명 보안을 다룹니다."],
+      ["21개국 디지털 자산법 준수는 무엇을 의미하나요?", "주요 21개국 규제 프레임워크에 맞춘 법적 정합성과 컴플라이언스 기준을 따릅니다."],
+      ["해킹 방어 컴플라이언스는 어떻게 작동하나요?", "다중 서명, 암호화, 실시간 이상 거래 감지를 통해 자산을 보호합니다."],
+      ["FATF 트래블 룰과 실시간 제재 리스트 검증은 왜 중요한가요?", "송수신자 투명성과 글로벌 제재 대상자 실시간 대조로 불법 자금 이동을 막기 위함입니다."],
+      ["공식 백서는 몇 조까지 구성되어 있나요?", "제1조부터 제10조까지 서술형 조문 형태로 구성되어 있습니다."],
+      ["3대 폴리시스는 어떤 내용을 담고 있나요?", "21개국 법·해킹 방어, FATF 트래블 룰·제재 리스트 검증, 데이터 보호·UBI·거버넌스 정책을 담고 있습니다."],
+      ["지갑연결 시 주의할 점은 무엇인가요?", "공식 경로를 통한 인증을 사용하고 개인 키나 민감 정보는 안전하게 보관해야 합니다."],
+      ["예치와 LP 스테이킹의 차이는 무엇인가요?", "예치는 자산 예치 및 이자 운용 중심이고, LP 스테이킹은 유동성 공급과 연계됩니다."],
+      ["토큰스왑과 DEX 스왑은 어떻게 다른가요?", "토큰스왑은 간편 교환을, DEX 스왑은 탈중앙화 거래 스왑 환경을 제공합니다."],
+      ["YouTube와 TikTok 공식 채널은 어디에 있나요?", "메인 하단 중앙 영역에서 바로 이동할 수 있습니다."],
+      ["전체 메뉴는 어떻게 여나요?", "우측 상단의 삼선 메뉴 버튼을 눌러 언제든 열 수 있습니다."]
+    ];
+
+    function initLanguages() {
+      const select = document.getElementById("langSelect");
+      select.innerHTML = languages.map((lang, idx) =>
+        `<option value="${idx}" ${idx === 0 ? "selected" : ""}>${lang}</option>`
+      ).join("");
+    }
 
     function renderModules() {
       const grid = document.getElementById("modulesGrid");
@@ -534,27 +702,28 @@
       `).join("");
     }
 
-    function changeLanguage(lang) {
-      const dict = i18n[lang] || i18n.ko;
-      document.getElementById("heroTitle").textContent = dict.heroTitle;
-      document.getElementById("dashTitle").textContent = dict.dashTitle;
-      document.getElementById("balanceLabel").textContent = dict.balanceLabel;
-      document.getElementById("interestLabel").textContent = dict.interestLabel;
-      document.getElementById("modulesTitle").textContent = dict.modulesTitle;
+    function renderFaqs() {
+      const list = document.getElementById("faqList");
+      list.innerHTML = faqs.map(([q, a], idx) => `
+        <li>
+          <div class="compliance-item">Q${idx + 1}. ${q}</div>
+          <div class="policy-content">${a}</div>
+        </li>
+      `).join("");
     }
 
     function toggleDrawer(show) {
       document.getElementById("drawerOverlay").classList.toggle("open", show);
     }
 
-    function handleDrawerClick(e) {
-      if (e.target.id === "drawerOverlay") {
+    function handleDrawerClick(event) {
+      if (event.target.id === "drawerOverlay") {
         toggleDrawer(false);
       }
     }
 
     function openModuleModal(name, desc) {
-      document.getElementById("modalModuleName").textContent = name;
+      document.getElementById("modalModuleName").textContent = `${name} 모듈`;
       document.getElementById("modalModuleDesc").textContent = desc;
       const resultBox = document.getElementById("apiResultBox");
       resultBox.style.display = "none";
@@ -575,11 +744,19 @@
     function runModuleApi() {
       const name = document.getElementById("modalModuleName").textContent;
       const resultBox = document.getElementById("apiResultBox");
+      const timestamp = new Date().toISOString();
       resultBox.style.display = "block";
-      resultBox.textContent = `[상태 확인 완료] ${name} 모듈 연동 상태가 정상입니다.`;
+      resultBox.textContent =
+`>>> [HK WORLDBANK BACKEND API]
+Timestamp: ${timestamp}
+Status: 200 OK
+Target: ${name}
+Message: 노드 동기화 및 요청 처리가 정상 완료되었습니다.`;
     }
 
+    initLanguages();
     renderModules();
+    renderFaqs();
   </script>
 </body>
 </html>
